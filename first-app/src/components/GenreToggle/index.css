@@ -1,0 +1,31 @@
+.genre-toggle_wrapper {
+    margin-bottom: 10px;
+}
+
+.genres_list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 10px;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.genre_item {
+    list-style-type: none;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: white;
+}
+
+.genre_item:hover {
+    cursor: pointer;
+}
+
+.genre_item.active {
+    border-bottom: 2px solid  #F65261;
+}
