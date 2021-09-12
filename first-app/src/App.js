@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+/*import logo from './logo.svg';
 import './App.css';
 
 function App() {
@@ -21,6 +21,9 @@ function App() {
       </header>
     </div>
   );
-}
+}*/
+import React from "react";
+
+const App = () => <h1>Hello React!</h1>
 
 export default App;
