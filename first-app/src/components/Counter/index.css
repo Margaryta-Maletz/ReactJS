@@ -1,0 +1,26 @@
+.counter_wrapper {
+    background-color: #61dafb;
+    border: 1px solid white;
+    padding: 10px;
+}
+
+.counter_header {
+    padding: 0;
+    margin: 0;
+}
+
+.counter_label {
+    margin-right: 10px;
+    vertical-align: bottom;
+}
+
+.counter_button {
+    background-color: white;
+    border: 2px solid blue;
+    color: blue;
+    font-weight: bold;
+}
+
+.counter_button:hover {
+    cursor: pointer;
+}
