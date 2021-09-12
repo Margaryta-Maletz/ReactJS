@@ -24,7 +24,7 @@ function App() {
 }*/
 import React from "react";
 
-class App extends React.Component {
+class App extends React.PureComponent {
     render() {
         return (<h1>Hello React!</h1>)
             }
