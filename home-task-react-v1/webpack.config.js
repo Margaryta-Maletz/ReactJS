@@ -2,10 +2,9 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    entry: './src/index.js',
+    entry: path.join(__dirname, 'src', 'index.js'),
     output: {
-        path: path.join(__dirname, 'dist'),
-        filename: 'index_bundle.js'
+        path: path.join(__dirname, 'dist')
     },
     module: {
         rules: [
@@ -17,12 +16,20 @@ module.exports = {
             {
                 test: /\.css$/i,
                 use: ['style-loader', 'css-loader']
+            },
+            {
+                test: /\.(png|jp(e*)g|svg|gif)$/,
+                use: ['file-loader'],
+            },
+            {
+                test: /\.svg$/,
+                use: ['@svgr/webpack'],
             }
         ]
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './src/index.html'
+            template: path.join(__dirname, 'src', 'index.html')
         })
     ]
 }
