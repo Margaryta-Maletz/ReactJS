@@ -1,11 +1,15 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const { merge } = require('webpack-merge');
 
-module.exports = {
+const baseConfig = {
     entry: path.join(__dirname, 'src', 'index.js'),
     output: {
-        path: path.join(__dirname, 'dist')
+        path: path.join(__dirname, 'dist'),
+        filename: 'index-bundle.js',
     },
+    mode: 'development',
     module: {
         rules: [
             {
@@ -17,19 +21,18 @@ module.exports = {
                 test: /\.css$/i,
                 use: ['style-loader', 'css-loader']
             },
-            {
-                test: /\.(png|jp(e*)g|svg|gif)$/,
-                use: ['file-loader'],
-            },
-            {
-                test: /\.svg$/,
-                use: ['@svgr/webpack'],
-            }
         ]
     },
     plugins: [
         new HtmlWebpackPlugin({
             template: path.join(__dirname, 'src', 'index.html')
-        })
+        }),
+        new CleanWebpackPlugin(),
     ]
+}
+
+module.exports = ({mode}) => {
+    const isProd = mode === 'prod';
+    const envConfig = isProd ? require('./webpack.prod.config') : require('./webpack.dev.config');
+    return merge(baseConfig, envConfig);
 }
