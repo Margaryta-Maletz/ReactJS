@@ -5,13 +5,7 @@
     justify-content: space-between;
     padding-bottom: 150px;
     margin-bottom: 10px;
-}
-
-.header_background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
+    z-index: 1;
 }
 
 .header_add-movie {

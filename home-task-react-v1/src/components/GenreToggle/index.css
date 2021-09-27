@@ -21,9 +21,6 @@
     line-height: 20px;
     text-transform: uppercase;
     color: white;
-}
-
-.genre_item:hover {
     cursor: pointer;
 }
 

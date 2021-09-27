@@ -1,7 +1,6 @@
 .main {
     position: relative;
     background-color: #232323;
-    z-index: -1;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;

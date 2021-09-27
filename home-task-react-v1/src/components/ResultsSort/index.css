@@ -6,9 +6,8 @@
     line-height: 20px;
     letter-spacing: 1px;
     text-transform: uppercase;
-    color: white;
+    color: darkgrey;
     mix-blend-mode: normal;
-    opacity: 0.6;
 }
 
 .results-sort_list {
@@ -23,4 +22,8 @@
     color: white;
     background: none;
     border: none;
+}
+
+.result-sort-item {
+    background: #424242;
 }
