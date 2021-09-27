@@ -1,11 +1,11 @@
 import React from 'react';
+import './index.css';
 
 export const ResultCount = (props) => {
     return (
         <>
-            {props.children}
             <label className='results-count_label'>
-                movies found
+                <strong className='results-count_label_bold'>{ props.count }</strong> movies found
             </label>
         </>
     )

@@ -1,0 +1,40 @@
+.card-poster_wrapper {
+    width: 322px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    color: white;
+    mix-blend-mode: normal;
+}
+
+.card-poster_title {
+    font-size: 18px;
+    line-height: 22px;
+    opacity: 0.7;
+    margin: 22px 0 8px;
+    width: 75%;
+}
+
+.card-poster_genre {
+    font-size: 14px;
+    line-height: 17px;
+    opacity: 0.5;
+    margin-block: 0;
+    margin: 0 0 50px;
+}
+
+.card-poster_release-date {
+    width: 66px;
+    height: 26px;
+    border: 1px solid #555555;
+    box-sizing: border-box;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: center;
+    margin: 22px 0 8px;
+}

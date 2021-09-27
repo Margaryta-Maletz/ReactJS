@@ -1,5 +1,6 @@
 import React from 'react';
 import { CardPoster } from '../CardPoster';
+import './index.css';
 
 export const CardPosterList = () => {
     const cardList = [

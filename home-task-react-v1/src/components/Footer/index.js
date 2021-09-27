@@ -1,9 +1,10 @@
 import React from 'react';
 import LogoIcon from '../LogoIcon';
+import './index.css';
 
 const Footer = () => {
     return (
-        <footer>
+        <footer className='footer wrapper'>
             <LogoIcon />
         </footer>
     )
