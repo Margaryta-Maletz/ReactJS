@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './index.css';
 
 export const CardPoster = (props) => {
@@ -10,4 +11,24 @@ export const CardPoster = (props) => {
             <p className='card-poster_genre'>{ props.cards.genre }</p>
         </div>
     )
+}
+
+CardPoster.propTypes = {
+    cards: {
+        imagePath: PropTypes.string.isRequired,
+        imageAlt: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+        releaseDate: PropTypes.number.isRequired,
+        genre: PropTypes.string.isRequired,
+    }
+}
+
+CardPoster.defaultProps = {
+    cards: {
+        imagePath: 'images/posters/poster1.jpg',
+        imageAlt: 'poster Pulp Fiction',
+        title: 'Pulp Fiction',
+        genre: 'Action & Adventure',
+        releaseDate: 2004,
+    }
 }
