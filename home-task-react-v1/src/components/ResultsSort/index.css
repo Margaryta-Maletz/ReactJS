@@ -1,0 +1,29 @@
+.results-sort_header {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: darkgrey;
+    mix-blend-mode: normal;
+}
+
+.results-sort_list {
+    margin-left: 31px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: white;
+    background: none;
+    border: none;
+}
+
+.result-sort-item {
+    background: #424242;
+}

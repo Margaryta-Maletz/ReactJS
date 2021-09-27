@@ -21,6 +21,13 @@ const baseConfig = {
                 test: /\.css$/i,
                 use: ['style-loader', 'css-loader']
             },
+            {
+                test: /\.(png|jpg|)$/,
+                loader: 'file-loader',
+                options: {
+                    name: '[path][name].[ext]?[hash]'
+                }
+            }
         ]
     },
     plugins: [
