@@ -4,6 +4,7 @@ import {ResultsSort} from '../ResultsSort';
 import { ResultCount } from '../ResultCount';
 import { CardPosterList } from '../CardPosterList';
 import './index.css';
+import ErrorBoundary from "../ErrorBoundary";
 
 const Main = () => {
     const genres = ['All', 'Documentary', 'Comedy', 'Horror', 'crime'];
@@ -12,7 +13,9 @@ const Main = () => {
     return (
         <main className='main wrapper'>
             <div className='top-border wrapper'></div>
-            <GenreToggle genres = { genres } />
+            <ErrorBoundary>
+                <GenreToggle genres = { genres } />
+            </ErrorBoundary>
             <ResultsSort sort = { sortList } />
             <ResultCount count='49' />
             <CardPosterList />
