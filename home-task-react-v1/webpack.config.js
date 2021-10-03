@@ -18,6 +18,10 @@ const baseConfig = {
                 use: 'babel-loader'
             },
             {
+                test: /\.tss?$/,
+                use: 'ts-loader'
+            },
+            {
                 test: /\.css$/i,
                 use: ['style-loader', 'css-loader']
             },
@@ -29,6 +33,9 @@ const baseConfig = {
                 }
             }
         ]
+    },
+    resolve: {
+      extensions: ['.tsx', '.ts', '.js',],
     },
     plugins: [
         new HtmlWebpackPlugin({

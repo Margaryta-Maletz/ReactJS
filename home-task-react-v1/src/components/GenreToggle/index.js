@@ -9,7 +9,6 @@ export const GenreToggle = (props) => {
                 : elem.classList.remove('active')
         ))
     }
-    throw new Error('my Error');
 
     return (
         <div className='genre-toggle_wrapper'>
