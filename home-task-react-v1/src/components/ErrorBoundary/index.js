@@ -1,19 +1,33 @@
 import React from 'react';
 import './index.css';
 
-const ErrorBoundary = (props) => {
-    const OopsText = () => (
-        <h2 className='oops-text'>
-            Oops, something went wrong... We are doing our best to fix the issue
-        </h2>
-    )
+class ErrorBoundary extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { hasError: false };
+    }
 
-    const isEverythinkOk = true;
-    return (
-        <>
-            { isEverythinkOk ? props.children : <OopsText /> }
-        </>
-    )
+    static getDerivedStateFromError(error) {
+        return { hasError: true };
+    }
+
+    componentDidCatch(error, errorInfo) {
+        console.log('Error', error.toString());
+        console.log('Info', errorInfo.componentStack);
+    }
+
+    render() {
+        if (this.state.hasError) {
+            // Error path
+            return (
+                <div>
+                    <h2>Oops, something went wrong... We are doing our best to fix the issue</h2>
+                </div>
+            );
+        }
+        // Normally, just render children
+        return this.props.children;
+    }
 }
 
 export default ErrorBoundary;

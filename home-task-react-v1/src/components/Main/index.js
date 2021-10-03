@@ -15,10 +15,10 @@ const Main = () => {
             <div className='top-border wrapper'></div>
             <ErrorBoundary>
                 <GenreToggle genres = { genres } />
+                <ResultsSort sort = { sortList } />
+                <ResultCount count='49' />
+                <CardPosterList />
             </ErrorBoundary>
-            <ResultsSort sort = { sortList } />
-            <ResultCount count='49' />
-            <CardPosterList />
         </main>
     )
 }
