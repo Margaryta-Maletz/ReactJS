@@ -13,12 +13,12 @@ const baseConfig = {
     module: {
         rules: [
             {
-                test: /\.js?$/,
+                test: /\.jsx?$/,
                 exclude: /node_modules/,
                 use: 'babel-loader'
             },
             {
-                test: /\.tss?$/,
+                test: /\.tsx?$/,
                 use: 'ts-loader'
             },
             {
