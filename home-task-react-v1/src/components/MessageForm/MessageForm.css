@@ -1,0 +1,34 @@
+.wrapper.wrapper-background {
+    flex-direction: column;
+}
+
+.wrapper .wrapper-message {
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+    background-color: black;
+    width: 686px;
+    height: 352px;
+    align-items: center;
+    justify-content: center;
+    align-items: flex-start;
+    top: 200px;
+    margin: 0 auto;
+    padding: 60px;
+}
+
+.message-label {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    color: #FFFFFF;
+    margin-bottom: 110px;
+}
+
+label.add_movie-button-submit {
+    line-height: 54px;
+    align-self: flex-end;
+}

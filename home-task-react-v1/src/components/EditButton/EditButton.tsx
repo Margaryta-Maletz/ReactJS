@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import './EditButton.css';
 import { AddMovie } from '../AddMovie';
+import { MessageForm } from '../MessageForm';
 import CloseButton from '../CloseButton'
 
 export const EditButton = (props) => {
@@ -8,15 +9,18 @@ export const EditButton = (props) => {
     const handleOpenIsMenu = () => {
         setIsMenu(true);
     }
+    const handleCloseIsMenu = () => {
+        setIsMenu(false);
+    }
 
     const [visibleAddMovie, setVisibleAddMovie] = useState<boolean>(false);
     const handleOpenFormEdit = () => {
         setVisibleAddMovie(true);
     }
 
-    const [visibleDelete, setVisibleDelete] = useState<boolean>(false);
+    const [visibleMessageForm, setVisibleMessageForm] = useState<boolean>(false);
     const handleOpenFormDelete = () => {
-        setVisibleDelete(true);
+        setVisibleMessageForm(true);
     }
 
     return (
@@ -24,7 +28,9 @@ export const EditButton = (props) => {
             {
                 isMenu
                     ? <div className="edit-menu">
-                        <CloseButton />
+                        <div className="edit-menu_close" onClick={handleCloseIsMenu}>
+                            <CloseButton width="11" height="12"/>
+                        </div>
                         <label className="edit-menu_button" onClick={handleOpenFormEdit}>Edit</label>
                         <label className="edit-menu_button" onClick={handleOpenFormDelete}>Delete</label>
                     </div>
@@ -49,6 +55,7 @@ export const EditButton = (props) => {
                     </svg>
             }
             {visibleAddMovie && <AddMovie isVisible={visibleAddMovie} setVisible={setVisibleAddMovie} movie={props.card}/>}
+            {visibleMessageForm && <MessageForm isVisible={visibleMessageForm} setVisible={setVisibleMessageForm} title="delete movie" message="Are you sure you want to delete this movie?"/>}
         </>
     )
 }
