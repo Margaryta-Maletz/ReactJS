@@ -13,9 +13,13 @@ const baseConfig = {
     module: {
         rules: [
             {
-                test: /\.js?$/,
+                test: /\.jsx?$/,
                 exclude: /node_modules/,
                 use: 'babel-loader'
+            },
+            {
+                test: /\.tsx?$/,
+                use: 'ts-loader'
             },
             {
                 test: /\.css$/i,
@@ -29,6 +33,9 @@ const baseConfig = {
                 }
             }
         ]
+    },
+    resolve: {
+      extensions: ['.tsx', '.ts', '.js',],
     },
     plugins: [
         new HtmlWebpackPlugin({

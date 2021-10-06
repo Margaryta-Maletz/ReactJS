@@ -1,0 +1,132 @@
+.wrapper-add_movie-background {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 100vw;
+    height: 100vh;
+    background: rgba(35, 35, 35, 0.918051);
+    mix-blend-mode: normal;
+    z-index: 5;
+}
+
+.wrapper.wrapper-add_movie {
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+    background-color: black;
+    margin: 0 auto;
+    padding: 60px;
+    width: 976px;
+    height: 900px;
+    z-index: 10;
+}
+
+.add_movie-close {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+}
+
+.add_movie-title {
+    width: 100%;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 40px;
+    line-height: 49px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    margin: 0 0 38px;
+}
+
+.add_movie-label {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #F65261;
+    mix-blend-mode: normal;
+    opacity: 0.8;
+    margin: 0 0 30px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+.add_movie-input {
+    background: rgba(50, 50, 50, 0.948044);
+    mix-blend-mode: normal;
+    opacity: 0.8;
+    border-radius: 4px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 24px;
+    color: #FFFFFF;
+    width: 490px;
+    padding: 16px ;
+    border: none;
+}
+
+.add_movie-label-second_column {
+    margin-left: 30px;
+}
+
+.add_movie-input-second_column {
+    width: 270px;
+}
+
+.add_movie-select {
+    width: 522px;
+    padding: 16px ;
+}
+
+.add_movie-textarea {
+    width: 827px;
+    height: 197px;
+    resize: none;
+}
+
+.add_movie-buttons_block {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.add_movie-button {
+    width: 180px;
+    height: 57px;
+    border-radius: 4px;
+    padding: 0;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.add_movie-button-reset {
+    margin-right: 13px;
+    border: 1.5px solid #F65261;
+    box-sizing: border-box;
+    color: #F65261;
+    background: none;
+}
+
+.add_movie-button-submit {
+    background: #F65261;
+    border: none;
+    color: #FFFFFF;
+}
