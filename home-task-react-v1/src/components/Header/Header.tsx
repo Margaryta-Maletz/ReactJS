@@ -24,7 +24,7 @@ export const Header = () => {
                 </button>
                 <SearchInput />
             </header>
-            {visibleAddMovie && <AddMovie isOpen = { true }/>}
+            {visibleAddMovie && <AddMovie isVisible={visibleAddMovie} setVisible={setVisibleAddMovie}/>}
         </>
     )
 }

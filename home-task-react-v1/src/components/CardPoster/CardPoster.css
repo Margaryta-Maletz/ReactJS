@@ -1,5 +1,6 @@
 .card-poster_wrapper {
     width: 322px;
+    position: relative;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;

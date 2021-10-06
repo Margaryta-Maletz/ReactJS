@@ -4,6 +4,8 @@
     gap: 15px;
     position: fixed;
     top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
     width: 100vw;
     height: 100vh;
     background: rgba(35, 35, 35, 0.918051);
