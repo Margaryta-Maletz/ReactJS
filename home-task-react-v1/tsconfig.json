@@ -1,6 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "strict": true,
     "module": "commonjs",
     "resolveJsonModule": true,
     "sourceMap": true,

@@ -2,9 +2,17 @@ import React, {useState} from 'react';
 import './EditButton.css';
 import { AddMovie } from '../AddMovie';
 import { MessageForm } from '../MessageForm';
-import CloseButton from '../CloseButton'
+import { CloseButton } from '../CloseButton'
 
-export const EditButton = (props) => {
+export type CardPosterProp = {
+    imagePath: string
+    imageAlt: string,
+    title: string,
+    genre: string,
+    releaseDate: number,
+}
+
+export const EditButton: React.FC<CardPosterProp> = (props) => {
     const [isMenu, setIsMenu] = useState<boolean>(false);
     const handleOpenIsMenu = () => {
         setIsMenu(true);
@@ -54,8 +62,8 @@ export const EditButton = (props) => {
                         </defs>
                     </svg>
             }
-            {visibleAddMovie && <AddMovie isVisible={visibleAddMovie} setVisible={setVisibleAddMovie} movie={props.card}/>}
-            {visibleMessageForm && <MessageForm isVisible={visibleMessageForm} setVisible={setVisibleMessageForm} title="delete movie" message="Are you sure you want to delete this movie?"/>}
+            {visibleAddMovie && <AddMovie isVisible={visibleAddMovie} setVisible={setVisibleAddMovie} movie={props}/>}
+            {visibleMessageForm && <MessageForm setVisible={setVisibleMessageForm} title="delete movie" message="Are you sure you want to delete this movie?"/>}
         </>
     )
 }

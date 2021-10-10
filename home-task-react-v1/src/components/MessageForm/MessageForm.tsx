@@ -1,20 +1,26 @@
 import React, {useEffect, useState} from 'react';
 import './MessageForm.css';
-import LogoIcon from '../LogoIcon'
-import CloseButton from '../CloseButton'
+import { LogoIcon } from '../LogoIcon';
+import { CloseButton } from '../CloseButton';
 
-export const MessageForm = (props) => {
+type SetVisibleProps = {
+    setVisible: (visible: boolean) => void,
+    title: string,
+    message: string,
+}
+
+export const MessageForm: React.FC<SetVisibleProps> = ({ setVisible, title,message }) => {
     const handleChangeVisible = () => {
-        props.setVisible(false);
+        setVisible(false);
     }
 
     const [isConfirm, setIsConfirm] = useState<boolean>(false);
     const handleChangeIsConfirm = () => {
         setIsConfirm(true);
-        props.setVisible(false);
+        setVisible(false);
     }
     useEffect(() => {
-        {isConfirm && console.log(props?.title ?? "form")}
+        {isConfirm && console.log(title ?? "form")}
     });
 
     return (
@@ -25,10 +31,10 @@ export const MessageForm = (props) => {
                     <CloseButton />
                 </div>
                 <h2 className="add_movie-title">
-                    {props?.title ?? "form"}
+                    {title ?? "form"}
                 </h2>
                 <label className="message-label">
-                    {props?.message ?? "Are you sure?"}
+                    {message ?? "Are you sure?"}
                 </label>
                 <label className="add_movie-button add_movie-button add_movie-button-submit" onClick={handleChangeIsConfirm}>confirm</label>
             </div>

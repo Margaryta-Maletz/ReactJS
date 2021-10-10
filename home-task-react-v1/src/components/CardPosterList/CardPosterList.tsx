@@ -1,9 +1,10 @@
 import React from 'react';
 import { CardPoster } from '../CardPoster';
-import './index.css';
+import { CardPosterProp } from "../EditButton";
+import './CardPosterList.css';
 
 export const CardPosterList = () => {
-    const cardList = [
+    const cardList: CardPosterProp[] = [
         {
             imagePath: 'images/posters/poster1.jpg',
             imageAlt: 'poster Pulp Fiction',
