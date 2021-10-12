@@ -5,11 +5,15 @@ import { MessageForm } from '../MessageForm';
 import { CloseButton } from '../CloseButton'
 
 export type CardPosterProp = {
-    imagePath: string
-    imageAlt: string,
-    title: string,
-    genre: string,
-    releaseDate: number,
+    imagePath?: string
+    imageAlt?: string,
+    title?: string,
+    genre?: string,
+    releaseDate?: number,
+    movieURL?: string,
+    overview?: string,
+    rating?: number,
+    runtime?: number,
 }
 
 export const EditButton: React.FC<CardPosterProp> = (props) => {
@@ -37,7 +41,7 @@ export const EditButton: React.FC<CardPosterProp> = (props) => {
                 isMenu
                     ? <div className="edit-menu">
                         <div className="edit-menu_close" onClick={handleCloseIsMenu}>
-                            <CloseButton width="11" height="12"/>
+                            <CloseButton width={11} height={12}/>
                         </div>
                         <label className="edit-menu_button" onClick={handleOpenFormEdit}>Edit</label>
                         <label className="edit-menu_button" onClick={handleOpenFormDelete}>Delete</label>

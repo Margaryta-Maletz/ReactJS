@@ -2,15 +2,21 @@ import React, {useState, useEffect} from 'react';
 import './AddMovie.css';
 import { LogoIcon } from '../LogoIcon';
 import { CloseButton } from '../CloseButton';
+import { CardPosterProp } from "../EditButton";
 
-export const AddMovie = (props) => {
+type AddMovieProps = {
+    movie?: CardPosterProp,
+    isVisible: boolean,
+    setVisible: (value: boolean) => void,
+}
+export const AddMovie: React.FC<AddMovieProps> = (props) => {
     const isEditMovie = props.movie;
     const [valueTitle, setValueTitle] = useState<string>(props.movie?.title ?? "");
     const handleChangeTitle = (event: React.ChangeEvent<HTMLInputElement>) => {
         setValueTitle(event.target.value);
     }
 
-    const [valueDate, setValueDate] = useState<string>(props.movie?.date ?? "");
+    const [valueDate, setValueDate] = useState<string>(props.movie?.releaseDate?.toString() ?? "");
     const handleChangeDate = (event: React.ChangeEvent<HTMLInputElement>) => {
         setValueDate(event.target.value);
     }
@@ -20,7 +26,7 @@ export const AddMovie = (props) => {
         setValueMovieURL(event.target.value);
     }
 
-    const [valueRating, setValueRating] = useState<string>(props.movie?.rating ?? "");
+    const [valueRating, setValueRating] = useState<string>(props.movie?.rating?.toString() ?? "");
     const handleChangeRating = (event: React.ChangeEvent<HTMLInputElement>) => {
         setValueRating(event.target.value);
     }
@@ -30,7 +36,7 @@ export const AddMovie = (props) => {
         setValueGenre(event.target.value);
     }
 
-    const [valueRuntime, setValueRuntime] = useState<string>(props.movie?.runtime ?? "");
+    const [valueRuntime, setValueRuntime] = useState<string>(props.movie?.runtime?.toString() ?? "");
     const handleChangeRuntime = (event: React.ChangeEvent<HTMLInputElement>) => {
         setValueRuntime(event.target.value);
     }
@@ -48,11 +54,11 @@ export const AddMovie = (props) => {
 
     const handleChangeProps = () => {
        setValueTitle(props.movie?.title ?? "");
-       setValueDate(props.movie?.date ?? "");
+       setValueDate(props.movie?.releaseDate?.toString() ?? '');
        setValueMovieURL(props.movie?.movieURL ?? "");
-       setValueRating(props.movie?.rating ?? "");
+       setValueRating(props.movie?.rating?.toString() ?? "");
        setValueGenre(props.movie?.genre ?? "");
-       setValueRuntime(props.movie?.runtime ?? "");
+       setValueRuntime(props.movie?.runtime?.toString() ?? "");
        setValueOverview(props.movie?.overview ?? "");
     }
 
@@ -64,11 +70,11 @@ export const AddMovie = (props) => {
         const oneWord = isEditMovie ? '"Edit movie"' : '"Add movie"';
         const secondWord = props.isVisible ? ' open.' : ' close.';
         console.log('Form ', oneWord, secondWord);
-    });
+    }, []);
 
     useEffect(() => {
         {isSubmit && console.log('Save information from form')}
-    });
+    }, [isSubmit]);
 
     return (
         <div className="wrapper wrapper-add_movie-background">

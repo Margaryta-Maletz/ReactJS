@@ -1,13 +1,11 @@
 import React from 'react';
-import LogoIcon from '../LogoIcon';
-import './index.css';
+import { LogoIcon } from '../LogoIcon';
+import './Footer.css';
 
-const Footer = () => {
+export const Footer: React.FC = () => {
     return (
         <footer className='footer wrapper'>
             <LogoIcon />
         </footer>
     )
 }
-
-export default Footer;

@@ -52,7 +52,7 @@ export const CardPosterList = () => {
     return (
         <div className="card-poster-list_wrapper">
             { cardList.map((item) =>
-                <CardPoster cards = { item } />
+                <CardPoster { ...item } />
             )}
         </div>
     )

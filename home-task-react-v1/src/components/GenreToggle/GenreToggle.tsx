@@ -1,10 +1,14 @@
 import React from "react";
-import './index.css';
+import './CenreToggle.css';
 
-export const GenreToggle = (props) => {
-    const addActive = (e) => {
-        const list = document.getElementsByClassName('genre_item');
-        [].map.call(list, (elem) => (
+type GenreToggleProp = {
+    genres: string[],
+}
+
+export const GenreToggle: React.FC<GenreToggleProp> = ({ genres }) => {
+    const addActive = (e: React.MouseEvent<HTMLElement>) => {
+        const list = document.querySelectorAll('.genre_item');
+        list?.forEach( (elem) => (
             e.target === elem ? elem.classList.add('active')
                 : elem.classList.remove('active')
         ))
@@ -13,7 +17,7 @@ export const GenreToggle = (props) => {
     return (
         <div className='genre-toggle_wrapper'>
             <ul className='genres_list'>
-                {props.genres.map((elem, i) => (
+                {genres.map((elem, i) => (
                     i ? <li className='genre_item' onClick={addActive}>{elem}</li>
                         : <li className='genre_item active' onClick={addActive}>{elem}</li>
                 ))}
