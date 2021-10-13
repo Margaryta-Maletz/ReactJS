@@ -12,8 +12,8 @@ export const CardPoster: React.FC<CardPosterProp> = (props) => {
     return (
         <>
             {visibleDetailsMovie && <DetailsMovie isVisible={ visibleDetailsMovie } setVisible={ setVisibleDetailsMovie } movie={ props }/>}
-            <div className='card-poster_wrapper' onClick={ handleClick }>
-                <img className='card-poster_image' src={ props?.imagePath ?? 'images/posters/poster1.jpg' } alt={ props?.imageAlt ?? 'poster Pulp Fiction' } />
+            <div className='card-poster_wrapper'>
+                <img className='card-poster_image' src={ props?.imagePath ?? 'images/posters/poster1.jpg' } alt={ props?.imageAlt ?? 'poster Pulp Fiction'}  onClick={ handleClick }/>
                 <EditButton { ...props }/>
                 <h4 className='card-poster_title'>{ props?.title ?? 'Pulp Fiction' }</h4>
                 <p className='card-poster_release-date'>{ props?.releaseDate ?? '2004' }</p>

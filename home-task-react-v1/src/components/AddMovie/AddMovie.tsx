@@ -6,8 +6,7 @@ import { CardPosterProp } from "../EditButton";
 
 type AddMovieProps = {
     movie?: CardPosterProp,
-    isVisible: boolean,
-    setVisible: (value: boolean) => void,
+    setVisibleAddMovie: () => void,
 }
 export const AddMovie: React.FC<AddMovieProps> = (props) => {
     const isEditMovie = props.movie;
@@ -49,7 +48,6 @@ export const AddMovie: React.FC<AddMovieProps> = (props) => {
     const [isSubmit, setIsSubmit] = useState<boolean>(false);
     const handleChangeIsSubmit = () => {
         setIsSubmit(true);
-        props.setVisible(false);
     }
 
     const handleChangeProps = () => {
@@ -62,14 +60,9 @@ export const AddMovie: React.FC<AddMovieProps> = (props) => {
        setValueOverview(props.movie?.overview ?? "");
     }
 
-    const handleChangeVisible = () => {
-        props.setVisible(false);
-    }
-
     useEffect(() => {
         const oneWord = isEditMovie ? '"Edit movie"' : '"Add movie"';
-        const secondWord = props.isVisible ? ' open.' : ' close.';
-        console.log('Form ', oneWord, secondWord);
+        console.log('Form ', oneWord, ' open.');
     }, []);
 
     useEffect(() => {
@@ -80,7 +73,7 @@ export const AddMovie: React.FC<AddMovieProps> = (props) => {
         <div className="wrapper wrapper-add_movie-background">
             <LogoIcon />
             <div className="wrapper wrapper-add_movie">
-                <div className="add_movie-close" onClick={handleChangeVisible}>
+                <div className="add_movie-close" onClick={props.setVisibleAddMovie}>
                     <CloseButton />
                 </div>
                 <h2 className="add_movie-title">
