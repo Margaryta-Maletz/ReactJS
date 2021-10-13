@@ -28,12 +28,13 @@ export const AddMovie: React.FC<AddMovieProps> = (props) => {
     const [valueRating, setValueRating] = useState<string>(props.movie?.rating?.toString() ?? "");
     const handleChangeRating = (event: React.ChangeEvent<HTMLInputElement>) => {
         setValueRating(event.target.value);
+        props.setVisibleAddMovie();
     }
 
-    const [valueGenre, setValueGenre] = useState<string>(props.movie?.genre ?? "");
+/*    const [valueGenre, setValueGenre] = useState<string>(props.movie?.genre ?? "");
     const handleChangeGenre = (event: React.ChangeEvent<HTMLInputElement>) => {
         setValueGenre(event.target.value);
-    }
+    }*/
 
     const [valueRuntime, setValueRuntime] = useState<string>(props.movie?.runtime?.toString() ?? "");
     const handleChangeRuntime = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -55,7 +56,7 @@ export const AddMovie: React.FC<AddMovieProps> = (props) => {
        setValueDate(props.movie?.releaseDate?.toString() ?? '');
        setValueMovieURL(props.movie?.movieURL ?? "");
        setValueRating(props.movie?.rating?.toString() ?? "");
-       setValueGenre(props.movie?.genre ?? "");
+/*       setValueGenre(props.movie?.genre ?? "");*/
        setValueRuntime(props.movie?.runtime?.toString() ?? "");
        setValueOverview(props.movie?.overview ?? "");
     }
@@ -73,7 +74,7 @@ export const AddMovie: React.FC<AddMovieProps> = (props) => {
         <div className="wrapper wrapper-add_movie-background">
             <LogoIcon />
             <div className="wrapper wrapper-add_movie">
-                <div className="add_movie-close" onClick={props.setVisibleAddMovie}>
+                <div className="add_movie-close" onClick={handleChangeIsSubmit}>
                     <CloseButton />
                 </div>
                 <h2 className="add_movie-title">
@@ -84,7 +85,7 @@ export const AddMovie: React.FC<AddMovieProps> = (props) => {
                 <>
                     <label className="add_movie-label">
                         title
-                        <input className="add_movie-input" type="text" placeholder="Moana" value={valueTitle} onChange={handleChangeTitle}/>
+                        <input className="add_movie-input" type="text" placeholder="Mona" value={valueTitle} onChange={handleChangeTitle}/>
                     </label>
                     <label className="add_movie-label add_movie-label-second_column">
                         release date
@@ -104,10 +105,10 @@ export const AddMovie: React.FC<AddMovieProps> = (props) => {
                 <>
                     <label className="add_movie-label">
                         genre
-                        <input className='add_movie-input add_movie-select' type="text" value={valueGenre} onChange={handleChangeGenre}>
+                        <select className='add_movie-input add_movie-select'>
                             <option selected className='add_movie-select-item'>Select Genre</option>
-                            {{valueGenre} && <option className='add_movie-select-item'>{valueGenre}</option>}
-                        </input>
+                            {/*{{valueGenre} && <option className='add_movie-select-item'>{valueGenre}</option>}*/}
+                        </select>
                     </label>
                     <label className="add_movie-label add_movie-label-second_column">
                         runtime
@@ -120,7 +121,7 @@ export const AddMovie: React.FC<AddMovieProps> = (props) => {
                 </label>
                 <div className='add_movie-buttons_block'>
                     <input className="add_movie-button add_movie-button add_movie-button-reset" type='reset' onClick={handleChangeProps}/>
-                    <input className="add_movie-button add_movie-button add_movie-button-submit" type='submit' onClick={handleChangeIsSubmit}/>
+                    <input className="add_movie-button add_movie-button add_movie-button-submit" type='submit' onClick={props.setVisibleAddMovie}/>
                 </div>
             </div>
         </div>
