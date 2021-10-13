@@ -4,6 +4,7 @@ import { AddMovie } from '../AddMovie';
 import { MessageForm } from '../MessageForm';
 import { CloseButton } from '../CloseButton'
 import useToggle from "../UseToggle";
+import {EditIcon} from "../EditIcon";
 
 export type CardPosterProp = {
     imagePath?: string
@@ -45,25 +46,9 @@ export const EditButton: React.FC<CardPosterProp> = (props) => {
                         <label className="edit-menu_button" onClick={toggleVisible}>Edit</label>
                         <label className="edit-menu_button" onClick={handleOpenFormDelete}>Delete</label>
                     </div>
-                    : <svg className="edit-button" width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" onClick={handleOpenIsMenu}>
-                        <g filter="url(#filter0_d)">
-                            <circle cx="22" cy="22" r="18" fill="#2A202D"/>
-                        </g>
-                        <circle cx="22" cy="15" r="2" fill="white"/>
-                        <circle cx="22" cy="22.5" r="2" fill="white"/>
-                        <circle cx="22" cy="30" r="2" fill="white"/>
-                        <defs>
-                            <filter id="filter0_d" x="0" y="0" width="44" height="44" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                                <feOffset/>
-                                <feGaussianBlur stdDeviation="2"/>
-                                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.196596 0"/>
-                                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
-                                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
-                            </filter>
-                        </defs>
-                    </svg>
+                    : <div className="edit-button" onClick={handleOpenIsMenu}>
+                        <EditIcon />
+                    </div>
             }
             {visibleAddMovie && <AddMovie setVisibleAddMovie={toggleVisible} movie={props}/>}
             {visibleMessageForm && <MessageForm setVisible={setVisibleMessageForm} title="delete movie" message="Are you sure you want to delete this movie?"/>}
