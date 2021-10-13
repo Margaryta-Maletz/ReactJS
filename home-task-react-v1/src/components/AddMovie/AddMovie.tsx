@@ -74,8 +74,8 @@ export const AddMovie: React.FC<AddMovieProps> = (props) => {
         <div className="wrapper wrapper-add_movie-background">
             <LogoIcon />
             <div className="wrapper wrapper-add_movie">
-                <div className="add_movie-close" onClick={handleChangeIsSubmit}>
-                    <CloseButton />
+                <div className="add_movie-close" onClick={props.setVisibleAddMovie}>
+                    <CloseButton/>
                 </div>
                 <h2 className="add_movie-title">
                     {isEditMovie

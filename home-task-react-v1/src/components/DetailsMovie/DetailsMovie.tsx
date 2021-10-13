@@ -6,7 +6,6 @@ import { CardPosterProp } from "../EditButton";
 
 type DetailsMovieProps = {
     movie?: CardPosterProp,
-    isVisible: boolean,
     setVisible: (value: boolean) => void,
 }
 
