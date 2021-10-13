@@ -1,1 +1,1 @@
-export { EditButton } from './EditButton';
+export { EditButton, CardPosterProp } from './EditButton';

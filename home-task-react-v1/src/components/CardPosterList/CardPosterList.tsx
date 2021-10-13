@@ -1,9 +1,10 @@
 import React from 'react';
 import { CardPoster } from '../CardPoster';
-import './index.css';
+import { CardPosterProp } from "../EditButton";
+import './CardPosterList.css';
 
 export const CardPosterList = () => {
-    const cardList = [
+    const cardList: CardPosterProp[] = [
         {
             imagePath: 'images/posters/poster1.jpg',
             imageAlt: 'poster Pulp Fiction',
@@ -51,7 +52,7 @@ export const CardPosterList = () => {
     return (
         <div className="card-poster-list_wrapper">
             { cardList.map((item) =>
-                <CardPoster cards = { item } />
+                <CardPoster { ...item } />
             )}
         </div>
     )

@@ -1,30 +1,28 @@
-import React, {useState} from 'react';
-import LogoIcon from '../LogoIcon';
+import React from 'react';
+import { LogoIcon } from '../LogoIcon';
 import { SearchInput } from '../SearchInput';
 import './Header.css';
 import backgroundImage from '../../assets/background-header.jpg';
 import { AddMovie } from "../AddMovie";
+import useToggle from "../UseToggle";
 
 export const Header = () => {
     const backgroundStyle = {
         backgroundImage: 'url(' + backgroundImage + ')',
     }
 
-    const [visibleAddMovie, setVisibleAddMovie] = useState<boolean>(false);
+    const [visibleAddMovie, toggleVisible] = useToggle(false);
 
-    const handleClick = () => {
-        setVisibleAddMovie(true);
-    }
     return (
         <>
             <header className='header wrapper' style={ backgroundStyle }>
                 <LogoIcon />
-                <button className='header_add-movie' onClick={handleClick}>
+                <button className='header_add-movie' onClick={toggleVisible}>
                     + add movie
                 </button>
                 <SearchInput />
             </header>
-            {visibleAddMovie && <AddMovie isVisible={visibleAddMovie} setVisible={setVisibleAddMovie}/>}
+            {visibleAddMovie && <AddMovie setVisibleAddMovie={toggleVisible}/>}
         </>
     )
 }
