@@ -1,0 +1,50 @@
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { CardPosterProp } from "../components/EditButton";
+import { initialState } from "./initialState";
+import { IState } from "./types";
+
+export const fetchMovies = createAsyncThunk(
+  "movies/fetchMovies",
+  async (props: { genre: string; sort: string }) => {
+    const url = new URL("http://localhost:4000/movies");
+
+    const params = {
+      genre: props.genre ?? "",
+      sort: props.sort ?? "title",
+    };
+
+    url.search = new URLSearchParams(params).toString();
+
+    const responseJson = await fetch(url.toString());
+    const response = await responseJson.json();
+
+    return response.data;
+  }
+);
+
+const slice = createSlice({
+  name: "movies",
+  initialState,
+  reducers: {
+    getMoviesStart: (state: IState) => {
+      state.loading = true;
+    },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(fetchMovies.fulfilled, (state, action) => {
+      state.movies = action.payload.data.map((movie: CardPosterProp) => ({
+        title: movie.title,
+      }));
+      state.loading = false;
+      state.error = null;
+    });
+    builder.addCase(fetchMovies.rejected, (state, action) => {
+      state.error = action.error;
+      state.loading = false;
+    });
+  },
+});
+
+export default slice.reducer;
+
+export const { getMoviesStart } = slice.actions;
