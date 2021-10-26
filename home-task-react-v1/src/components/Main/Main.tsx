@@ -19,7 +19,7 @@ export const Main = () => {
                 <GenreToggle genres = { genres } />
                 <ResultsSort sortList = { sortList } />
                 <ResultCount count={ count.toString() } />
-                <CardPosterList />
+               {/* <CardPosterList />*/}
             </ErrorBoundary>
         </main>
     )

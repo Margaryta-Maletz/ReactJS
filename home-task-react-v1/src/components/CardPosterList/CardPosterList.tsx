@@ -2,9 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { CardPoster } from '../CardPoster';
 import { CardPosterProp } from '../EditButton';
-import { getMovies } from '../../store/actionCreators';
-import { store, AppDispatch, RootState } from '../../store/store';
-import { useAppSelector, useAppDispatch } from '../App/hooks'
+// import { useAppSelector, useAppDispatch } from '../App/hooks'
 import './CardPosterList.css';
 
 interface Props {
@@ -12,9 +10,9 @@ interface Props {
     getMovies: () => void;
 }
 
-export const CardPosterListComponent: React.FC<Props> = ({ movies, getMovies }) => {
+export const CardPosterList: React.FC<Props> = ({ movies, getMovies }) => {
     useEffect(() => {
-        getMovies();
+        // getMovies();
     }, []);
 
     return (
@@ -26,7 +24,7 @@ export const CardPosterListComponent: React.FC<Props> = ({ movies, getMovies }) 
     )
 }
 
-function mapStateToProps(state: RootState) {
+/*function mapStateToProps(state: RootState) {
     const { movies: { movies, loading, error } } = state;
 
     return { movies };
@@ -38,4 +36,4 @@ function mapDispatchToProps(dispatch: AppDispatch) {
     };
 }
 
-export const CardPosterList = connect(mapStateToProps, mapDispatchToProps)(CardPosterListComponent);
+export const CardPosterList = connect(mapStateToProps, mapDispatchToProps)(CardPosterListComponent);*/

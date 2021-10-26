@@ -1,4 +1,3 @@
-/*
 import React, {useState, useEffect} from 'react';
 import './AddMovie.css';
 import { LogoIcon } from '../LogoIcon';
@@ -10,7 +9,7 @@ type AddMovieProps = {
     setVisibleAddMovie: () => void,
 }
 export const AddMovie: React.FC<AddMovieProps> = (props) => {
-    const isEditMovie = props.movie;
+/*    const isEditMovie = props.movie;
     const [valueTitle, setValueTitle] = useState<string>(props.movie?.title ?? "");
     const handleChangeTitle = (event: React.ChangeEvent<HTMLInputElement>) => {
         setValueTitle(event.target.value);
@@ -69,12 +68,12 @@ export const AddMovie: React.FC<AddMovieProps> = (props) => {
 
     useEffect(() => {
         {isSubmit && console.log('Save information from form')}
-    }, [isSubmit]);
+    }, [isSubmit]);*/
 
     return (
         <div className="wrapper wrapper-add_movie-background">
             <LogoIcon />
-            <div className="wrapper wrapper-add_movie">
+{/*            <div className="wrapper wrapper-add_movie">
                 <div className="add_movie-close" onClick={props.setVisibleAddMovie}>
                     <CloseButton/>
                 </div>
@@ -108,7 +107,7 @@ export const AddMovie: React.FC<AddMovieProps> = (props) => {
                         genre
                         <select className='add_movie-input add_movie-select'>
                             <option selected className='add_movie-select-item'>Select Genre</option>
-                            {/!*{{valueGenre} && <option className='add_movie-select-item'>{valueGenre}</option>}*!/}
+                            {{valueGenre} && <option className='add_movie-select-item'>{valueGenre}</option>}
                         </select>
                     </label>
                     <label className="add_movie-label add_movie-label-second_column">
@@ -124,8 +123,7 @@ export const AddMovie: React.FC<AddMovieProps> = (props) => {
                     <input className="add_movie-button add_movie-button add_movie-button-reset" type='reset' onClick={handleChangeProps}/>
                     <input className="add_movie-button add_movie-button add_movie-button-submit" type='submit' onClick={props.setVisibleAddMovie}/>
                 </div>
-            </div>
+            </div>*/}
         </div>
     )
 }
-*/
