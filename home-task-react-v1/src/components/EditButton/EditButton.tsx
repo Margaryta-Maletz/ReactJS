@@ -6,16 +6,20 @@ import { CloseButton } from '../CloseButton'
 import useToggle from "../UseToggle";
 import {EditIcon} from "../EditIcon";
 
+
 export type CardPosterProp = {
-    imagePath?: string
-    imageAlt?: string,
-    title?: string,
-    genre?: string,
-    releaseDate?: number,
-    movieURL?: string,
-    overview?: string,
-    rating?: number,
-    runtime?: number,
+    id: number,
+    title: string,
+    tagline: string,
+    vote_average: number,
+    vote_count: number,
+    release_date: string,
+    poster_path: string,
+    overview: string,
+    budget: number,
+    revenue: number,
+    genres: string[],
+    runtime: number
 }
 
 export const EditButton: React.FC<CardPosterProp> = (props) => {

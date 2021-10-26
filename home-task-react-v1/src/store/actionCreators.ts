@@ -1,14 +1,15 @@
+/*
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {ACTIONS} from './actionTypes';
-import { AppDispatch } from './store';
+import { AppDispatch, AppThunk } from './index';
 
-export const sort = (value: string) => (dispatch: AppDispatch) => {
-    dispatch({type: ACTIONS.SORT, payload: value});
+export const sort = (value: string) => (dispatch: AppThunk) => {
+    dispatch({type: ACTIONS.SORT, payload: value}, null, null);
     dispatch(getMovies('', value));
 }
 
 export const getMovies = (genre: string, sort: string) => (dispatch: AppDispatch) => {
-    dispatch({type: ACTIONS.GET_MOVIES_START});
+    dispatch({type: ACTIONS.GET_MOVIES_START, payload: []});
     const url = new URL('http://localhost:4000/movies');
 
     const params = {
@@ -25,6 +26,7 @@ export const getMovies = (genre: string, sort: string) => (dispatch: AppDispatch
             dispatch({type: ACTIONS.GET_MOVIES_SUCCESS, payload: data, error: null});
         })
         .catch((error) => {
-            dispatch({type: ACTIONS.GET_MOVIES_ERROR, payload: null, error: error});
+            dispatch({type: ACTIONS.GET_MOVIES_ERROR, payload: [], error: error});
         });
 }
+*/

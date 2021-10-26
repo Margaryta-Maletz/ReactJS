@@ -1,3 +1,4 @@
+/*
 import React, {useState, useEffect} from 'react';
 import './AddMovie.css';
 import { LogoIcon } from '../LogoIcon';
@@ -31,10 +32,10 @@ export const AddMovie: React.FC<AddMovieProps> = (props) => {
         props.setVisibleAddMovie();
     }
 
-/*    const [valueGenre, setValueGenre] = useState<string>(props.movie?.genre ?? "");
+/!*    const [valueGenre, setValueGenre] = useState<string>(props.movie?.genre ?? "");
     const handleChangeGenre = (event: React.ChangeEvent<HTMLInputElement>) => {
         setValueGenre(event.target.value);
-    }*/
+    }*!/
 
     const [valueRuntime, setValueRuntime] = useState<string>(props.movie?.runtime?.toString() ?? "");
     const handleChangeRuntime = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -56,7 +57,7 @@ export const AddMovie: React.FC<AddMovieProps> = (props) => {
        setValueDate(props.movie?.releaseDate?.toString() ?? '');
        setValueMovieURL(props.movie?.movieURL ?? "");
        setValueRating(props.movie?.rating?.toString() ?? "");
-/*       setValueGenre(props.movie?.genre ?? "");*/
+/!*       setValueGenre(props.movie?.genre ?? "");*!/
        setValueRuntime(props.movie?.runtime?.toString() ?? "");
        setValueOverview(props.movie?.overview ?? "");
     }
@@ -107,7 +108,7 @@ export const AddMovie: React.FC<AddMovieProps> = (props) => {
                         genre
                         <select className='add_movie-input add_movie-select'>
                             <option selected className='add_movie-select-item'>Select Genre</option>
-                            {/*{{valueGenre} && <option className='add_movie-select-item'>{valueGenre}</option>}*/}
+                            {/!*{{valueGenre} && <option className='add_movie-select-item'>{valueGenre}</option>}*!/}
                         </select>
                     </label>
                     <label className="add_movie-label add_movie-label-second_column">
@@ -127,3 +128,4 @@ export const AddMovie: React.FC<AddMovieProps> = (props) => {
         </div>
     )
 }
+*/

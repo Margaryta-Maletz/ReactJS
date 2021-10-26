@@ -2,13 +2,12 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
 import { ThunkAction } from 'redux-thunk'
 import { ACTIONS } from './actionTypes';
-import { CardPosterProp } from '../components/EditButton';
 
-const sort = (state = 'title', {type, payload}) => {
+const sort = (state = 'title', {type, payload}: PayloadAction<string>) => {
    return type === ACTIONS.SORT ? state = payload : state;
 }
 
-const movies = (state = {movies: [], loading: false, error: null}, {type, payload, error}) => {
+const movies = (state = {movies: [], loading: false, error: null}, {type, payload, error}: PayloadAction<CardPosterProp[]>) => {
     switch (type) {
         case ACTIONS.GET_MOVIES_START:
             return {
@@ -17,7 +16,7 @@ const movies = (state = {movies: [], loading: false, error: null}, {type, payloa
             };
         case ACTIONS.GET_MOVIES_SUCCESS:
             return {
-                movies: payload.data.map((movie: CardPosterProp) => ({title: movie.title})),
+                movies: payload.data,
                 loading: false,
                 error: null,
             };

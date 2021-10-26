@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { Header } from '../Header';
 import { Main } from '../Main';
 import { Footer } from '../Footer';
-import { store } from '../../store/store'
+import { store } from '../../store/index'
 import './index.css'
 
 export default function App() {
