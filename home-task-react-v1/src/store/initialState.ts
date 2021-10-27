@@ -1,6 +1,7 @@
 import { IState } from "./types";
 
 export const initialState: IState = {
+  activeGenre: null,
   loading: false,
   error: null,
   movies: [

@@ -5,17 +5,15 @@ import {IMovie, IState} from "./types";
 export const fetchMovies = createAsyncThunk(
     "movies/fetchMovies",
     async () => {
-        const url = new URL("http://localhost:4000/movies");
-
-/*        const params = {
-            filter: (props.genre ?? []).join(' & '),
-            sortBy: props.sort ?? "title",
+        const url = new URL("http://localhost:4000/movies?filter=Family");
+/*
+        const params = {
+            filter: "Family",
         };
 
         url.search = new URLSearchParams(params).toString();*/
 
-        //const responseJson = await fetch(url.toString());
-        const responseJson = await fetch("http://localhost:4000/movies");
+        const responseJson = await fetch(url.toString());
         const response = await responseJson.json();
 
         return response.data;
@@ -28,6 +26,9 @@ const slice = createSlice({
     reducers: {
         getMoviesStart: (state: IState) => {
             state.loading = true;
+        },
+        setActiveGenre: (state: IState, action) => {
+            state.activeGenre = action.payload;
         },
     },
     extraReducers: (builder) => {
@@ -45,4 +46,4 @@ const slice = createSlice({
 
 export default slice.reducer;
 
-export const { getMoviesStart } = slice.actions;
+export const { getMoviesStart, setActiveGenre } = slice.actions;

@@ -14,6 +14,7 @@ export interface IMovie {
 }
 
 export interface IState {
+    activeGenre: string | null,
     loading: boolean;
     movies: IMovie[];
     error: any;
