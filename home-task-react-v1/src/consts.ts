@@ -1,13 +1,18 @@
 export enum Genre {
     Action = 'Action',
-    Adveture = 'Adventure',
+    Adventure = 'Adventure',
     Animation = 'Animation',
     Comedy ='Comedy',
     Drama = 'Drama',
     Family = 'Family',
     Fantasy = 'Fantasy',
-    Romance = 'Romance',
-    ScienceFiction = 'Science Fiction'
+}
+
+export enum SortList {
+    release_date = 'Release Date',
+    title = 'Title',
+    genre = 'Genre',
 }
 
 export const genres = Object.values(Genre);
+export const sortList = Object.entries(SortList).map(([id, value]) => ({ id, value}));

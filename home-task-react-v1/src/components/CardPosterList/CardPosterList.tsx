@@ -8,12 +8,12 @@ import { IState } from '../../store/types';
 export const CardPosterList: React.FC = () => {
 
     const dispatch = useDispatch();
-    const { movies, activeGenre } = useSelector((state: IState) => state);
+    const { movies, activeGenre, sortItem } = useSelector((state: IState) => state);
 
     useEffect(() => {
         dispatch(getMoviesStart());
         dispatch(fetchMovies());
-    }, [activeGenre]);
+    }, [activeGenre, sortItem]);
 
     return (
         <div className="card-poster-list_wrapper">

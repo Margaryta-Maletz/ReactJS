@@ -1,20 +1,26 @@
 import React from 'react';
 import './ResultsSort.css';
+import {sortList} from '../../consts';
+import {useDispatch, useSelector} from "react-redux";
+import {IState} from "../../store/types";
+import {setSortItem} from "../../store/slice";
 
-type ResultsSortProp = {
-    sortList: string[],
-}
+export const ResultsSort: React.FC = () => {
+    const dispatch = useDispatch();
+    const { sortItem } = useSelector((state: IState) => state);
 
-export const ResultsSort: React.FC<ResultsSortProp> = ({ sortList= ['title'] }) => {
+    const handleSortItem = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        dispatch(setSortItem(e.target.value));
+    }
+
     return (
         <>
             <label className='results-sort_header'>
                 sort by
-                <select className='results-sort_list'>
-                    {sortList.map((item: string, index: number) =>
-                        index ? <option key={index.toString()} value={index.toString()} className='result-sort-item'>{ item }</option>
-                            : <option key={index.toString()} defaultValue={index.toString()} className='result-sort-item'>{ item }</option>
-                    )}
+                <select className='results-sort_list' value={sortItem} onChange={handleSortItem}>
+                    {sortList.map((elem) => (
+                        <option key={elem.id} value={elem.id} className='result-sort-item'>{elem.value}</option>
+                    ))}
                 </select>
             </label>
         </>

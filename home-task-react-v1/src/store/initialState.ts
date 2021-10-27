@@ -2,6 +2,7 @@ import { IState } from "./types";
 
 export const initialState: IState = {
   activeGenre: null,
+  sortItem: 'release_date',
   loading: false,
   error: null,
   movies: [

@@ -13,6 +13,8 @@ export const fetchMovies = createAsyncThunk(
 
         const params = {
             filter: state.activeGenre || '',
+            sortBy: state.sortItem,
+            sortOrder: state.sortItem === initialState.sortItem ? 'desc' : 'asc',
         };
 
         url.search = new URLSearchParams(params).toString();
@@ -34,6 +36,9 @@ const slice = createSlice({
         setActiveGenre: (state: IState, action) => {
             state.activeGenre = action.payload;
         },
+        setSortItem: (state: IState, action) => {
+            state.sortItem = action.payload;
+        },
     },
     extraReducers: (builder) => {
         builder.addCase(fetchMovies.fulfilled, (state, action) => {
@@ -50,4 +55,4 @@ const slice = createSlice({
 
 export default slice.reducer;
 
-export const { getMoviesStart, setActiveGenre } = slice.actions;
+export const { getMoviesStart, setActiveGenre, setSortItem } = slice.actions;

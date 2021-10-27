@@ -14,7 +14,8 @@ export interface IMovie {
 }
 
 export interface IState {
-    activeGenre: string | null,
+    activeGenre: string | null;
+    sortItem: string;
     loading: boolean;
     movies: IMovie[];
     error: any;
