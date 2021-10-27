@@ -1,17 +1,21 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { initialState } from "./initialState";
 import {IMovie, IState} from "./types";
+import {RootState} from "./store";
 
 export const fetchMovies = createAsyncThunk(
     "movies/fetchMovies",
-    async () => {
-        const url = new URL("http://localhost:4000/movies?filter=Family");
-/*
+    async (_, thunkApi) => {
+
+        const state = thunkApi.getState() as RootState;
+
+        const url = new URL("http://localhost:4000/movies");
+
         const params = {
-            filter: "Family",
+            filter: state.activeGenre || '',
         };
 
-        url.search = new URLSearchParams(params).toString();*/
+        url.search = new URLSearchParams(params).toString();
 
         const responseJson = await fetch(url.toString());
         const response = await responseJson.json();
