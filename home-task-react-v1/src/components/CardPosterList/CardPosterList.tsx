@@ -1,39 +1,26 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { CardPoster } from '../CardPoster';
-import { CardPosterProp } from '../EditButton';
-// import { useAppSelector, useAppDispatch } from '../App/hooks'
 import './CardPosterList.css';
+import { fetchMovies, getMoviesStart } from '../../store/slice';
+import { IState } from '../../store/types';
 
-interface Props {
-    movies: CardPosterProp[];
-    getMovies: () => void;
-}
+export const CardPosterList: React.FC = () => {
 
-export const CardPosterList: React.FC<Props> = ({ movies, getMovies }) => {
+    const dispatch = useDispatch();
+    const { movies } = useSelector((state: IState) => state);
+
     useEffect(() => {
-        // getMovies();
+        dispatch(getMoviesStart());
+        dispatch(fetchMovies());
+        console.log('Movies!!!!', movies);
     }, []);
 
     return (
         <div className="card-poster-list_wrapper">
             { movies.map((item) =>
-                <CardPoster { ...item } />
+                <CardPoster key={item.id.toString()} { ...item } />
             )}
         </div>
     )
 }
-
-/*function mapStateToProps(state: RootState) {
-    const { movies: { movies, loading, error } } = state;
-
-    return { movies };
-}
-
-function mapDispatchToProps(dispatch: AppDispatch) {
-    return {
-        getMovies: (genre: string[] = [], sort: string = '') => dispatch(getMovies(genre, sort)),
-    };
-}
-
-export const CardPosterList = connect(mapStateToProps, mapDispatchToProps)(CardPosterListComponent);*/

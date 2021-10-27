@@ -3,11 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import './DetailsMovie.css';
 import { LogoIcon } from '../LogoIcon';
 import { SearchIcon } from "../SearchIcon";
-import { CardPosterProp } from "../EditButton";
-import { selector } from '../../store/slice';
+import {IMovie, IState} from '../../store/types';
 
 type DetailsMovieProps = {
-    movie?: CardPosterProp,
+    movie?: IMovie,
     setVisible: (value: boolean) => void,
 }
 

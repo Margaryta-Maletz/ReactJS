@@ -2,10 +2,10 @@ import React, {useState, useEffect} from 'react';
 import './AddMovie.css';
 import { LogoIcon } from '../LogoIcon';
 import { CloseButton } from '../CloseButton';
-import { CardPosterProp } from "../EditButton";
+import {IMovie, IState} from '../../store/types';
 
 type AddMovieProps = {
-    movie?: CardPosterProp,
+    movie?: IMovie,
     setVisibleAddMovie: () => void,
 }
 export const AddMovie: React.FC<AddMovieProps> = (props) => {

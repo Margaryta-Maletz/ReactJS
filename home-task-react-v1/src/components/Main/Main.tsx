@@ -6,11 +6,15 @@ import { CardPosterList } from '../CardPosterList';
 import './Main.css';
 // @ts-ignore
 import ErrorBoundary from "../ErrorBoundary";
+import {useSelector} from "react-redux";
+import {IState} from "../../store/types";
+
 
 export const Main = () => {
-    const genres = ['All', 'Documentary', 'Comedy', 'Horror', 'crime'];
+    const genres = ['All', 'Action', 'Adventure', 'Animation', 'Comedy', 'Drama', 'Family', 'Fantasy', 'Romance', 'Science Fiction'];
+    const { movies } = useSelector((state: IState) => state);
     const sortList = ['Release Date', 'title', 'genre'];
-    const count = 49;
+    const count = movies.length;
 
     return (
         <main className='main wrapper'>
@@ -19,7 +23,7 @@ export const Main = () => {
                 <GenreToggle genres = { genres } />
                 <ResultsSort sortList = { sortList } />
                 <ResultCount count={ count.toString() } />
-               {/* <CardPosterList />*/}
+                <CardPosterList />
             </ErrorBoundary>
         </main>
     )

@@ -18,8 +18,8 @@ export const GenreToggle: React.FC<GenreToggleProp> = ({ genres }) => {
         <div className='genre-toggle_wrapper'>
             <ul className='genres_list'>
                 {genres.map((elem, i) => (
-                    i ? <li className='genre_item' onClick={addActive}>{elem}</li>
-                        : <li className='genre_item active' onClick={addActive}>{elem}</li>
+                    i ? <li key={elem} className='genre_item' onClick={addActive}>{elem}</li>
+                        : <li key={elem} className='genre_item active' onClick={addActive}>{elem}</li>
                 ))}
             </ul>
         </div>
