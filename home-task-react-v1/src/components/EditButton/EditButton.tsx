@@ -5,20 +5,9 @@ import { MessageForm } from '../MessageForm';
 import { CloseButton } from '../CloseButton'
 import useToggle from "../UseToggle";
 import {EditIcon} from "../EditIcon";
+import {IMovie, IState} from '../../store/types';
 
-export type CardPosterProp = {
-    imagePath?: string
-    imageAlt?: string,
-    title?: string,
-    genre?: string,
-    releaseDate?: number,
-    movieURL?: string,
-    overview?: string,
-    rating?: number,
-    runtime?: number,
-}
-
-export const EditButton: React.FC<CardPosterProp> = (props) => {
+export const EditButton: React.FC<IMovie> = (props) => {
     const [isMenu, setIsMenu] = useState<boolean>(false);
     const handleOpenIsMenu = (e: React.MouseEvent) => {
         e.defaultPrevented;

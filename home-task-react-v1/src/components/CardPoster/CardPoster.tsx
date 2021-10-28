@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import './CardPoster.css';
-import { EditButton, CardPosterProp } from "../EditButton";
+import { EditButton} from "../EditButton";
 import { DetailsMovie } from "../DetailsMovie";
+import {IMovie, IState} from '../../store/types';
 
-export const CardPoster: React.FC<CardPosterProp> = (props) => {
+export const CardPoster: React.FC<IMovie> = (props) => {
     const [visibleDetailsMovie, setVisibleDetailsMovie] = useState<boolean>(false);
     const handleClick = () => {
         setVisibleDetailsMovie(true);
@@ -13,11 +14,11 @@ export const CardPoster: React.FC<CardPosterProp> = (props) => {
         <>
             {visibleDetailsMovie && <DetailsMovie setVisible={ setVisibleDetailsMovie } movie={ props }/>}
             <div className='card-poster_wrapper'>
-                <img className='card-poster_image' src={ props?.imagePath ?? 'images/posters/poster1.jpg' } alt={ props?.imageAlt ?? 'poster Pulp Fiction'}  onClick={ handleClick }/>
+                <img className='card-poster_image' src={ props?.poster_path } alt={ props?.tagline}  width="322" height="455" onClick={ handleClick }/>
                 <EditButton { ...props }/>
-                <h4 className='card-poster_title'>{ props?.title ?? 'Pulp Fiction' }</h4>
-                <p className='card-poster_release-date'>{ props?.releaseDate ?? '2004' }</p>
-                <p className='card-poster_genre'>{ props?.genre ?? 'Action & Adventure' }</p>
+                <h4 className='card-poster_title'>{ props?.title }</h4>
+                <p className='card-poster_release-date'>{ props?.release_date.slice(0, 4) }</p>
+                <p className='card-poster_genre'>{ props?.genres.join(' & ') }</p>
             </div>
         </>
     )

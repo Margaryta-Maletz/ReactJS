@@ -1,17 +1,20 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import './DetailsMovie.css';
 import { LogoIcon } from '../LogoIcon';
 import { SearchIcon } from "../SearchIcon";
-import { CardPosterProp } from "../EditButton";
+import {IMovie, IState} from '../../store/types';
 
 type DetailsMovieProps = {
-    movie?: CardPosterProp,
+    movie?: IMovie,
     setVisible: (value: boolean) => void,
 }
 
 export const DetailsMovie: React.FC<DetailsMovieProps> = (props) => {
+    // const { isVisibledDetailsMovie } = useSelector(selector);
+
     const handleChangeVisible = () => {
-        props.setVisible(false);
+        // dispatch(isVisibledDetailsMovie(false));
     }
 
     return (
@@ -21,14 +24,14 @@ export const DetailsMovie: React.FC<DetailsMovieProps> = (props) => {
                 <SearchIcon />
             </div>
             <div className="wrapper-details_movie-card">
-                <img className='details-movie_image card-poster_image' src={ props?.movie?.imagePath ?? 'images/posters/poster1.jpg' } alt={ props?.movie?.imageAlt ?? 'poster Pulp Fiction' } />
+                <img className='details-movie_image card-poster_image' src={ props?.movie?.poster_path } alt={ props?.movie?.tagline } />
                 <div className="wrapper-details_movie-context">
-                    <label className="details_movie-title">{props.movie?.title ?? "Movie title"}</label>
-                    <label className="details_movie-rating add_movie-label-second_column">{props.movie?.rating?.toString() ?? "7.8"}</label>
-                    <label className="details_movie-genre card-poster_genre">{props.movie?.genre ?? ""}</label>
-                    <label className="add_movie-label">{props.movie?.releaseDate?.toString() ?? '2021'}</label>
-                    <label className="add_movie-label add_movie-label-second_column">{props.movie?.runtime?.toString() ?? "minutes"}</label>
-                    <textarea className="details_movie-textarea" readOnly={true}>{props.movie?.overview ?? "Movie description"}</textarea>
+                    <label className="details_movie-title">{props.movie?.title}</label>
+                    <label className="details_movie-rating add_movie-label-second_column">{props.movie?.vote_average.toString()}</label>
+                    <label className="details_movie-genre card-poster_genre">{props.movie?.genres.join(' & ')}</label>
+                    <label className="add_movie-label">{props.movie?.release_date}</label>
+                    <label className="add_movie-label add_movie-label-second_column">{props.movie?.runtime?.toString()}</label>
+                    <textarea className="details_movie-textarea" readOnly={true}>{props.movie?.overview}</textarea>
                 </div>
             </div>
         </div>
