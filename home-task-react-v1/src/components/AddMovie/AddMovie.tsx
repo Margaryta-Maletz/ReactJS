@@ -54,9 +54,22 @@ export const AddMovie: React.FC<AddMovieProps> = (props) => {
                             .then((require) => alert(JSON.stringify(require, null, 2)))
                             .catch((error) => alert(error))
                             : await
-                                axios.post('http://localhost:4000/movies', values)
-                                    .then((require) => alert(JSON.stringify(require, null, 2)))
+                                axios.post('http://localhost:4000/movies', {
+                                    title: values.title,
+                                    tagline: values.title,
+                                    vote_average: values.vote_average,
+                                    vote_count: values.vote_count,
+                                    release_date: values.release_date,
+                                    poster_path: values.poster_path,
+                                    overview: values.overview,
+                                    budget: values.budget,
+                                    revenue: values.revenue,
+                                    genres: values.genres,
+                                    runtime: values.runtime,
+                                })
+                                    .then(() => {})
                                     .catch((error) => alert(error));
+                        props.setVisibleAddMovie();
                     }}
                 >
                     {({ isSubmitting }) => (
@@ -94,8 +107,8 @@ export const AddMovie: React.FC<AddMovieProps> = (props) => {
                                 <Field name="overview" className="add_movie-input add_movie-textarea" type="textarea" placeholder="Movie description" />
                             </label>
                             <div className='add_movie-buttons_block'>
-                                <input className="add_movie-button add_movie-button add_movie-button-reset" type='reset'/>
-                                <input className="add_movie-button add_movie-button add_movie-button-submit" type="submit" disabled={isSubmitting}/>
+                                <input className="add_movie-button add_movie-button-reset" type='reset'/>
+                                <input className="add_movie-button add_movie-button-submit" type="submit" disabled={isSubmitting}/>
                             </div>
                         </Form>
                     )}

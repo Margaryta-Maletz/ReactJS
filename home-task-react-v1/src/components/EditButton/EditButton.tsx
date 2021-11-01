@@ -5,7 +5,7 @@ import { MessageForm } from '../MessageForm';
 import { CloseButton } from '../CloseButton'
 import useToggle from "../UseToggle";
 import {EditIcon} from "../EditIcon";
-import {IMovie, IState} from '../../store/types';
+import {IMovie} from '../../store/types';
 
 export const EditButton: React.FC<IMovie> = (props) => {
     const [isMenu, setIsMenu] = useState<boolean>(false);
@@ -40,7 +40,7 @@ export const EditButton: React.FC<IMovie> = (props) => {
                     </div>
             }
             {visibleAddMovie && <AddMovie setVisibleAddMovie={toggleVisible} movie={props}/>}
-            {visibleMessageForm && <MessageForm setVisible={setVisibleMessageForm} title="delete movie" message="Are you sure you want to delete this movie?"/>}
+            {visibleMessageForm && <MessageForm setVisible={setVisibleMessageForm} title="delete movie" message="Are you sure you want to delete this movie?" deletedId={props.id}/>}
         </>
     )
 }
