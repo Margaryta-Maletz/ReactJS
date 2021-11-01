@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { initialState } from "./initialState";
-import {IMovie, IState} from "./types";
+import {IState} from "./types";
 import {RootState} from "./store";
 
 export const fetchMovies = createAsyncThunk(

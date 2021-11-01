@@ -1,79 +1,28 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
+import { Formik, Field, Form } from 'formik';
 import './AddMovie.css';
 import { LogoIcon } from '../LogoIcon';
 import { CloseButton } from '../CloseButton';
-import {IMovie, IState} from '../../store/types';
+import { IMovie } from '../../store/types';
+import { genres } from "../../consts";
+import axios from "axios";
 
 type AddMovieProps = {
     movie?: IMovie,
     setVisibleAddMovie: () => void,
 }
 export const AddMovie: React.FC<AddMovieProps> = (props) => {
-/*    const isEditMovie = props.movie;
-    const [valueTitle, setValueTitle] = useState<string>(props.movie?.title ?? "");
-    const handleChangeTitle = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setValueTitle(event.target.value);
-    }
-
-    const [valueDate, setValueDate] = useState<string>(props.movie?.releaseDate?.toString() ?? "");
-    const handleChangeDate = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setValueDate(event.target.value);
-    }
-
-    const [valueMovieURL, setValueMovieURL] = useState<string>(props.movie?.movieURL ?? "");
-    const handleChangeMovieURL = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setValueMovieURL(event.target.value);
-    }
-
-    const [valueRating, setValueRating] = useState<string>(props.movie?.rating?.toString() ?? "");
-    const handleChangeRating = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setValueRating(event.target.value);
-        props.setVisibleAddMovie();
-    }
-
-/!*    const [valueGenre, setValueGenre] = useState<string>(props.movie?.genre ?? "");
-    const handleChangeGenre = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setValueGenre(event.target.value);
-    }*!/
-
-    const [valueRuntime, setValueRuntime] = useState<string>(props.movie?.runtime?.toString() ?? "");
-    const handleChangeRuntime = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setValueRuntime(event.target.value);
-    }
-
-    const [valueOverview, setValueOverview] = useState<string>(props.movie?.overview ?? "");
-    const handleChangeOverview = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-        setValueOverview(event.target.value);
-    }
-
-    const [isSubmit, setIsSubmit] = useState<boolean>(false);
-    const handleChangeIsSubmit = () => {
-        setIsSubmit(true);
-    }
-
-    const handleChangeProps = () => {
-       setValueTitle(props.movie?.title ?? "");
-       setValueDate(props.movie?.releaseDate?.toString() ?? '');
-       setValueMovieURL(props.movie?.movieURL ?? "");
-       setValueRating(props.movie?.rating?.toString() ?? "");
-/!*       setValueGenre(props.movie?.genre ?? "");*!/
-       setValueRuntime(props.movie?.runtime?.toString() ?? "");
-       setValueOverview(props.movie?.overview ?? "");
-    }
+    const isEditMovie = props.movie;
 
     useEffect(() => {
         const oneWord = isEditMovie ? '"Edit movie"' : '"Add movie"';
         console.log('Form ', oneWord, ' open.');
     }, []);
 
-    useEffect(() => {
-        {isSubmit && console.log('Save information from form')}
-    }, [isSubmit]);*/
-
     return (
         <div className="wrapper wrapper-add_movie-background">
             <LogoIcon />
-{/*            <div className="wrapper wrapper-add_movie">
+            <div className="wrapper wrapper-add_movie">
                 <div className="add_movie-close" onClick={props.setVisibleAddMovie}>
                     <CloseButton/>
                 </div>
@@ -82,48 +31,71 @@ export const AddMovie: React.FC<AddMovieProps> = (props) => {
                     ? 'edit movie'
                     : 'add movie'}
                 </h2>
-                <>
-                    <label className="add_movie-label">
-                        title
-                        <input className="add_movie-input" type="text" placeholder="Mona" value={valueTitle} onChange={handleChangeTitle}/>
-                    </label>
-                    <label className="add_movie-label add_movie-label-second_column">
-                        release date
-                        <input className="add_movie-input add_movie-input-second_column" type='date' placeholder="Select Date" value={valueDate} onChange={handleChangeDate}/>
-                    </label>
-                </>
-                <>
-                    <label className="add_movie-label">
-                        movie URL
-                        <input className="add_movie-input" type="text" placeholder="https://" value={valueMovieURL} onChange={handleChangeMovieURL}/>
-                    </label>
-                    <label className="add_movie-label add_movie-label-second_column">
-                        rating
-                        <input className="add_movie-input add_movie-input-second_column" type="text" placeholder="7.8" value={valueRating} onChange={handleChangeRating}/>
-                    </label>
-                </>
-                <>
-                    <label className="add_movie-label">
-                        genre
-                        <select className='add_movie-input add_movie-select'>
-                            <option selected className='add_movie-select-item'>Select Genre</option>
-                            {{valueGenre} && <option className='add_movie-select-item'>{valueGenre}</option>}
-                        </select>
-                    </label>
-                    <label className="add_movie-label add_movie-label-second_column">
-                        runtime
-                        <input className="add_movie-input add_movie-input-second_column" type='text' placeholder="minutes" value={valueRuntime} onChange={handleChangeRuntime}/>
-                    </label>
-                </>
-                <label className="add_movie-label">
-                    overview
-                    <textarea className="add_movie-input add_movie-textarea" placeholder="Movie description" onChange={handleChangeOverview}>{valueOverview}</textarea>
-                </label>
-                <div className='add_movie-buttons_block'>
-                    <input className="add_movie-button add_movie-button add_movie-button-reset" type='reset' onClick={handleChangeProps}/>
-                    <input className="add_movie-button add_movie-button add_movie-button-submit" type='submit' onClick={props.setVisibleAddMovie}/>
-                </div>
-            </div>*/}
+                <Formik
+                    initialValues={{
+                        title: "",
+                        tagline: "image",
+                        vote_average: 0,
+                        vote_count: 0,
+                        release_date: "",
+                        poster_path: "",
+                        overview: "",
+                        budget: 0,
+                        revenue: 0,
+                        genres: ["Action"],
+                        runtime: null,
+                    }}
+
+                    onSubmit={async (values) => {
+                        alert(JSON.stringify(values, null, 2));
+                        await
+                            axios.post('http://localhost:4000/movies', values)
+                            .then((require) => alert(JSON.stringify(require, null, 2)))
+                            .catch((error) => alert(error));
+                    }}
+                >
+                    {({ isSubmitting }) => (
+                        <Form>
+                            <label htmlFor="title" className="add_movie-label">
+                                title
+                                <Field name="title" className="add_movie-input" type="text" placeholder="Title movie"/>
+                            </label>
+                            <label htmlFor="release_date" className="add_movie-label add_movie-second_column">
+                                release date
+                                <Field name="release_date" className="add_movie-input add_movie-second_column" type="date" placeholder="Select Date"/>
+                            </label>
+                            <label htmlFor="poster_path" className="add_movie-label">
+                                movie URL
+                                <Field name="poster_path" className="add_movie-input" type="text" placeholder="https://"/>
+                            </label>
+                            <label htmlFor="vote_average" className="add_movie-label add_movie-second_column">
+                                rating
+                                <Field name="vote_average" className="add_movie-input add_movie-second_column" type={"number"} placeholder="7.8" />
+                            </label>
+                            <label htmlFor="genres" className="add_movie-label">
+                                genre
+                                <Field name="genres" className="add_movie-input add_movie-select" as="select" placeholder="Select Genre">
+                                    {genres.map((elem) => (
+                                        <option className='add_movie-select-item' key={elem} value={elem}>{elem}</option>
+                                    ))}
+                                </Field>
+                            </label>
+                            <label htmlFor="runtime" className="add_movie-label add_movie-second_column">
+                                runtime
+                                <Field name="runtime" className="add_movie-input add_movie-second_column" type={"number"} placeholder="minutes"/>
+                            </label>
+                            <label htmlFor="overview" className="add_movie-label">
+                                overview
+                                <Field name="overview" className="add_movie-input add_movie-textarea" type="textarea" placeholder="Movie description" />
+                            </label>
+                            <div className='add_movie-buttons_block'>
+                                <input className="add_movie-button add_movie-button add_movie-button-reset" type='reset'/>
+                                <input className="add_movie-button add_movie-button add_movie-button-submit" type="submit" disabled={isSubmitting}/>
+                            </div>
+                        </Form>
+                    )}
+                </Formik>
+            </div>
         </div>
     )
 }

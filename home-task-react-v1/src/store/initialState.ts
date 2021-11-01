@@ -22,5 +22,5 @@ export const initialState: IState = {
       genres: ["Drama", "Romance"],
       runtime: 106,
     },
-  ],
+  ]
 };

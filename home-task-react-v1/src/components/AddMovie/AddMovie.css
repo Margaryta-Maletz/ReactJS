@@ -1,3 +1,11 @@
+form {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 60px;
+    row-gap: 30px;
+    width: 100%;
+}
+
 .wrapper-add_movie-background {
     display: flex;
     flex-wrap: wrap;
@@ -55,6 +63,7 @@
     color: #F65261;
     mix-blend-mode: normal;
     opacity: 0.8;
+    width: 490px;
     margin: 0 0 30px;
     padding: 0;
     display: flex;
@@ -71,18 +80,14 @@
     font-style: normal;
     font-weight: normal;
     font-size: 20px;
-    line-height: 24px;
+    line-height: 28px;
     color: #FFFFFF;
     width: 490px;
     padding: 16px ;
     border: none;
 }
 
-.add_movie-label-second_column {
-    margin-left: 30px;
-}
-
-.add_movie-input-second_column {
+.add_movie-second_column {
     width: 270px;
 }
 
