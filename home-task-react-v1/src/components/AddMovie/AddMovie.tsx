@@ -33,25 +33,30 @@ export const AddMovie: React.FC<AddMovieProps> = (props) => {
                 </h2>
                 <Formik
                     initialValues={{
-                        title: "",
-                        tagline: "image",
-                        vote_average: 0,
-                        vote_count: 0,
-                        release_date: "",
-                        poster_path: "",
-                        overview: "",
-                        budget: 0,
-                        revenue: 0,
-                        genres: ["Action"],
-                        runtime: null,
+                        title: props.movie?.title || "",
+                        tagline: props.movie?.tagline || "image",
+                        vote_average: props.movie?.vote_average || 0,
+                        vote_count: props.movie?.vote_count || 0,
+                        release_date: props.movie?.release_date || "",
+                        poster_path: props.movie?.poster_path || "",
+                        overview: props.movie?.overview || "",
+                        budget: props.movie?.budget || 0,
+                        revenue: props.movie?.revenue || 0,
+                        genres: props.movie?.genres || ["Action"],
+                        runtime: props.movie?.runtime || null,
+                        id: props.movie?.id || null,
                     }}
 
                     onSubmit={async (values) => {
-                        alert(JSON.stringify(values, null, 2));
-                        await
-                            axios.post('http://localhost:4000/movies', values)
+                        isEditMovie
+                            ? await
+                            axios.put('http://localhost:4000/movies', values)
                             .then((require) => alert(JSON.stringify(require, null, 2)))
-                            .catch((error) => alert(error));
+                            .catch((error) => alert(error))
+                            : await
+                                axios.post('http://localhost:4000/movies', values)
+                                    .then((require) => alert(JSON.stringify(require, null, 2)))
+                                    .catch((error) => alert(error));
                     }}
                 >
                     {({ isSubmitting }) => (
