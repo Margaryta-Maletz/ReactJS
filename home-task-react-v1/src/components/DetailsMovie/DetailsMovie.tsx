@@ -11,10 +11,9 @@ type DetailsMovieProps = {
 }
 
 export const DetailsMovie: React.FC<DetailsMovieProps> = (props) => {
-    // const { isVisibledDetailsMovie } = useSelector(selector);
 
     const handleChangeVisible = () => {
-        // dispatch(isVisibledDetailsMovie(false));
+        props.setVisible(false);
     }
 
     return (

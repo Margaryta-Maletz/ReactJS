@@ -32,7 +32,7 @@ export const MessageForm: React.FC<SetVisibleProps> = ({ setVisible, title,messa
                     handleChangeVisible();
                     await
                         axios.delete(`http://localhost:4000/movies/${deletedId}`)
-                            .then(() => {dispatch(setEditMovieList)})
+                            .then(() => {dispatch(setEditMovieList(true))})
                             .catch((error) => alert(error));
                 }}
             >

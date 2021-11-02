@@ -7,7 +7,7 @@ import {IMovie, IState} from '../../store/types';
 import { genres } from "../../consts";
 import axios from "axios";
 import {useDispatch, useSelector} from "react-redux";
-import {setEditMovieList, setSortItem} from "../../store/slice";
+import {setEditMovieList} from "../../store/slice";
 
 type AddMovieProps = {
     movie?: IMovie,
@@ -16,7 +16,6 @@ type AddMovieProps = {
 export const AddMovie: React.FC<AddMovieProps> = (props) => {
     const isEditMovie = props.movie;
     const dispatch = useDispatch();
-    const { editMovieList } = useSelector((state: IState) => state);
 
     function validateTitle(value: string) {
         let error;
@@ -48,8 +47,6 @@ export const AddMovie: React.FC<AddMovieProps> = (props) => {
         let error;
         if (!value) {
             error = 'Required';
-        } else if (value.length > 255) {
-            error = 'Must be 255 characters or less';
         }
         return error;
     }
@@ -58,8 +55,6 @@ export const AddMovie: React.FC<AddMovieProps> = (props) => {
         let error;
         if (!value) {
             error = 'Required';
-        } else if (value > 0) {
-            error = 'Must be more than 0';
         }
         return error;
     }
@@ -112,7 +107,7 @@ export const AddMovie: React.FC<AddMovieProps> = (props) => {
                         isEditMovie
                             ? await
                             axios.put('http://localhost:4000/movies', values)
-                            .then(() => {dispatch(setEditMovieList);})
+                            .then(() => {dispatch(setEditMovieList(true));})
                             .catch((error) => alert(error))
                             : await
                                 axios.post('http://localhost:4000/movies', {
@@ -128,7 +123,7 @@ export const AddMovie: React.FC<AddMovieProps> = (props) => {
                                     genres: values.genres,
                                     runtime: values.runtime,
                                 })
-                                    .then(() => {dispatch(setEditMovieList)})
+                                    .then(() => {dispatch(setEditMovieList(true))})
                                     .catch((error) => alert(error));
                         props.setVisibleAddMovie();
                     }}

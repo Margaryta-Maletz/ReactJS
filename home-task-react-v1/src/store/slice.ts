@@ -39,8 +39,8 @@ const slice = createSlice({
         setSortItem: (state: IState, action) => {
             state.sortItem = action.payload;
         },
-        setEditMovieList: (state: IState) => {
-            state.editMovieList = true;
+        setEditMovieList: (state: IState, action) => {
+            state.editMovieList = action.payload;
         },
     },
     extraReducers: (builder) => {
