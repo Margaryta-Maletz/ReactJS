@@ -16,6 +16,7 @@ export interface IMovie {
 export interface IState {
     activeGenre: string | null;
     sortItem: string;
+    editMovieList: boolean;
     loading: boolean;
     movies: IMovie[];
     error: any;

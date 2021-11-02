@@ -39,20 +39,25 @@ const slice = createSlice({
         setSortItem: (state: IState, action) => {
             state.sortItem = action.payload;
         },
+        setEditMovieList: (state: IState) => {
+            state.editMovieList = true;
+        },
     },
     extraReducers: (builder) => {
         builder.addCase(fetchMovies.fulfilled, (state, action) => {
             state.movies = action.payload;
             state.loading = false;
+            state.editMovieList = false;
             state.error = null;
         });
         builder.addCase(fetchMovies.rejected, (state, action) => {
             state.error = action.error;
             state.loading = false;
+            state.editMovieList = false;
         });
     },
 });
 
 export default slice.reducer;
 
-export const { getMoviesStart, setActiveGenre, setSortItem } = slice.actions;
+export const { getMoviesStart, setActiveGenre, setSortItem, setEditMovieList } = slice.actions;
