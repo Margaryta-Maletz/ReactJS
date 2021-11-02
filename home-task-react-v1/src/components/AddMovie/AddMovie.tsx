@@ -4,9 +4,9 @@ import './AddMovie.css';
 import { LogoIcon } from '../LogoIcon';
 import { CloseButton } from '../CloseButton';
 import {IMovie} from '../../store/types';
-import { genres } from "../../consts";
+import { genres, multiGenres } from "../../consts";
 import axios from "axios";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {setEditMovieList} from "../../store/slice";
 // @ts-ignore
 import MultiSelect from "elevate-ui/MultiSelect";
@@ -155,19 +155,21 @@ export const AddMovie: React.FC<AddMovieProps> = (props) => {
 {/*                            <Field
                                 id="genres"
                                 name="genres"
-                                items={genres}
-                                label="genre"
-                                component={MultiSelect}
                                 tags={true}
-                                className="add_movie-input add_movie-select"
+                                items={multiGenres}
+                                component={MultiSelect}
                             />*/}
                             <label htmlFor="genres" className="add_movie-label">
                                 genre
-                                <Field name="genres" className="add_movie-input add_movie-select" as="select" isMulti placeholder="Select Genre" validate={validateGenres}>
+                                <Field id="genres"
+                                name="genres"
+                                tags={true}
+                                items={multiGenres}
+                                component={MultiSelect} className="add_movie-input add_movie-select" placeholder="Select Genre" validate={validateGenres}>
                                     {errors.genres && touched.genres && <div className="add_movie-error">{errors.genres}</div>}
-                                    {genres.map((elem) => (
+{/*                                    {genres.map((elem) => (
                                         <option className='add_movie-select-item' key={elem} value={elem}>{elem}</option>
-                                    ))}
+                                    ))}*/}
                                 </Field>
                             </label>
                             <label htmlFor="runtime" className="add_movie-label add_movie-second_column">

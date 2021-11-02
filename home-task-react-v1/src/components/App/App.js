@@ -5,13 +5,16 @@ import { Main } from '../Main';
 import { Footer } from '../Footer';
 import { store } from '../../store/store'
 import './index.css'
+import ThemeProvider from "elevate-ui/ThemeProvider";
 
 export default function App() {
     return (
-        <Provider store={store}>
-            <Header />
-            <Main />
-            <Footer />
-        </Provider>
+        <ThemeProvider>
+            <Provider store={store}>
+                <Header />
+                <Main />
+                <Footer />
+            </Provider>
+        </ThemeProvider>
     )
 }
