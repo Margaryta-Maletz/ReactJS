@@ -14,6 +14,63 @@ type AddMovieProps = {
 export const AddMovie: React.FC<AddMovieProps> = (props) => {
     const isEditMovie = props.movie;
 
+    function validateTitle(value: string) {
+        let error;
+        if (!value) {
+            error = 'Required';
+        } else if (value.length > 30) {
+            error = 'Must be 30 characters or less';
+        }
+        return error;
+    }
+
+    function validateReleaseDate(value: Date) {
+        let error;
+        if (!value) {
+            error = 'Required';
+        }
+        return error;
+    }
+
+    function validatePosterPath(value: string) {
+        let error;
+        if (!value) {
+            error = 'Required';
+        }
+        return error;
+    }
+
+    function validateOverview(value: string) {
+        let error;
+        if (!value) {
+            error = 'Required';
+        } else if (value.length > 255) {
+            error = 'Must be 255 characters or less';
+        }
+        return error;
+    }
+
+    function validateRuntime(value: number) {
+        let error;
+        if (!value) {
+            error = 'Required';
+        } else if (value > 0) {
+            error = 'Must be more than 0';
+        }
+        return error;
+    }
+
+    function validateGenres(value: string) {
+        let error;
+        if (!value) {
+            error = 'Required';
+        } else if (!value[0]) {
+            error = 'Must be array of string';
+        }
+
+        return error;
+    }
+
     useEffect(() => {
         const oneWord = isEditMovie ? '"Edit movie"' : '"Add movie"';
         console.log('Form ', oneWord, ' open.');
@@ -33,7 +90,7 @@ export const AddMovie: React.FC<AddMovieProps> = (props) => {
                 </h2>
                 <Formik
                     initialValues={{
-                        title: props.movie?.title || "",
+                        title: (props.movie?.title || ""),
                         tagline: props.movie?.tagline || "image",
                         vote_average: props.movie?.vote_average || 0,
                         vote_count: props.movie?.vote_count || 0,
@@ -72,19 +129,22 @@ export const AddMovie: React.FC<AddMovieProps> = (props) => {
                         props.setVisibleAddMovie();
                     }}
                 >
-                    {({ isSubmitting }) => (
+                    {({ errors, touched, isSubmitting, validateField, validateForm }) => (
                         <Form>
                             <label htmlFor="title" className="add_movie-label">
                                 title
-                                <Field name="title" className="add_movie-input" type="text" placeholder="Title movie"/>
+                                <Field name="title" className="add_movie-input" type="text" placeholder="Title movie" validate={validateTitle}/>
+                                {errors.title && touched.title && <div>{errors.title}</div>}
                             </label>
                             <label htmlFor="release_date" className="add_movie-label add_movie-second_column">
                                 release date
-                                <Field name="release_date" className="add_movie-input add_movie-second_column" type="date" placeholder="Select Date"/>
+                                <Field name="release_date" className="add_movie-input add_movie-second_column" type="date" placeholder="Select Date" validate={validateReleaseDate}/>
+                                {errors.release_date && touched.release_date && <div>{errors.release_date}</div>}
                             </label>
                             <label htmlFor="poster_path" className="add_movie-label">
                                 movie URL
-                                <Field name="poster_path" className="add_movie-input" type="text" placeholder="https://"/>
+                                <Field name="poster_path" className="add_movie-input" type="text" placeholder="https://" validate={validatePosterPath}/>
+                                {errors.poster_path && touched.poster_path && <div>{errors.poster_path}</div>}
                             </label>
                             <label htmlFor="vote_average" className="add_movie-label add_movie-second_column">
                                 rating
@@ -92,7 +152,8 @@ export const AddMovie: React.FC<AddMovieProps> = (props) => {
                             </label>
                             <label htmlFor="genres" className="add_movie-label">
                                 genre
-                                <Field name="genres" className="add_movie-input add_movie-select" as="select" placeholder="Select Genre">
+                                <Field name="genres" className="add_movie-input add_movie-select" as="select" placeholder="Select Genre" validate={validateGenres}>
+                                    {errors.genres && touched.genres && <div>{errors.genres}</div>}
                                     {genres.map((elem) => (
                                         <option className='add_movie-select-item' key={elem} value={elem}>{elem}</option>
                                     ))}
@@ -100,11 +161,13 @@ export const AddMovie: React.FC<AddMovieProps> = (props) => {
                             </label>
                             <label htmlFor="runtime" className="add_movie-label add_movie-second_column">
                                 runtime
-                                <Field name="runtime" className="add_movie-input add_movie-second_column" type={"number"} placeholder="minutes"/>
+                                <Field name="runtime" className="add_movie-input add_movie-second_column" type={"number"} placeholder="minutes" validate={validateRuntime}/>
+                                {errors.runtime && touched.runtime && <div>{errors.runtime}</div>}
                             </label>
                             <label htmlFor="overview" className="add_movie-label">
                                 overview
-                                <Field name="overview" className="add_movie-input add_movie-textarea" type="textarea" placeholder="Movie description" />
+                                <Field name="overview" className="add_movie-input add_movie-textarea" type="textarea" placeholder="Movie description" validate={validateOverview}/>
+                                {errors.overview && touched.overview && <div>{errors.overview}</div>}
                             </label>
                             <div className='add_movie-buttons_block'>
                                 <input className="add_movie-button add_movie-button-reset" type='reset'/>
