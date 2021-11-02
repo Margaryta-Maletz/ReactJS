@@ -70,7 +70,8 @@ form {
     gap: 13px;
 }
 
-.add_movie-input {
+.add_movie-input,
+div.add_movie-select {
     background: rgba(50, 50, 50, 0.948044);
     mix-blend-mode: normal;
     opacity: 0.8;
@@ -88,11 +89,6 @@ form {
 
 .add_movie-second_column {
     width: 270px;
-}
-
-.add_movie-select {
-    width: 522px;
-    padding: 16px ;
 }
 
 .add_movie-textarea {
@@ -140,6 +136,6 @@ form {
     padding: 0;
     font-style: normal;
     font-weight: 400;
-    font-size: 10px;
-    line-height: 14px;
+    font-size: 8px;
+    line-height: 10px;
 }

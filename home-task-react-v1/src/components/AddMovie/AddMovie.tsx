@@ -162,10 +162,14 @@ export const AddMovie: React.FC<AddMovieProps> = (props) => {
                             <label htmlFor="genres" className="add_movie-label">
                                 genre
                                 <Field id="genres"
-                                name="genres"
-                                tags={true}
-                                items={multiGenres}
-                                component={MultiSelect} className="add_movie-input add_movie-select" placeholder="Select Genre" validate={validateGenres}>
+                                       name="genres"
+                                       ags={true}
+                                       items={multiGenres}
+                                       component={MultiSelect}
+                                       className="add_movie-input add_movie-select"
+                                       placeholder="Select Genre"
+                                       validate={validateGenres}
+                                >
                                     {errors.genres && touched.genres && <div className="add_movie-error">{errors.genres}</div>}
 {/*                                    {genres.map((elem) => (
                                         <option className='add_movie-select-item' key={elem} value={elem}>{elem}</option>
