@@ -23,7 +23,7 @@ export const DetailsMovie: React.FC<DetailsMovieProps> = (props) => {
                 <SearchIcon />
             </div>
             <div className="wrapper-details_movie-card">
-                <img className='details-movie_image card-poster_image' src={ props?.movie?.poster_path } alt={ props?.movie?.tagline } />
+                <img className='details-movie_image card-poster_image' src={ props?.movie?.poster_path } alt={ props?.movie?.tagline } width="322" height="486" />
                 <div className="wrapper-details_movie-context">
                     <label className="details_movie-title">{props.movie?.title}</label>
                     <label className="details_movie-rating add_movie-label-second_column">{props.movie?.vote_average.toString()}</label>
