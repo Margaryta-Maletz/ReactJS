@@ -3,11 +3,13 @@ import { Formik, Field, Form } from 'formik';
 import './AddMovie.css';
 import { LogoIcon } from '../LogoIcon';
 import { CloseButton } from '../CloseButton';
-import {IMovie, IState} from '../../store/types';
+import {IMovie} from '../../store/types';
 import { genres } from "../../consts";
 import axios from "axios";
 import {useDispatch, useSelector} from "react-redux";
 import {setEditMovieList} from "../../store/slice";
+// @ts-ignore
+import MultiSelect from "elevate-ui/MultiSelect";
 
 type AddMovieProps = {
     movie?: IMovie,
@@ -16,6 +18,20 @@ type AddMovieProps = {
 export const AddMovie: React.FC<AddMovieProps> = (props) => {
     const isEditMovie = props.movie;
     const dispatch = useDispatch();
+    const formInitialValues = {
+        title: props.movie?.title || "",
+        tagline: props.movie?.tagline || "image",
+        vote_average: props.movie?.vote_average || 0,
+        vote_count: props.movie?.vote_count || 0,
+        release_date: props.movie?.release_date || "",
+        poster_path: props.movie?.poster_path || "",
+        overview: props.movie?.overview || "",
+        budget: props.movie?.budget || 0,
+        revenue: props.movie?.revenue || 0,
+        genres: props.movie?.genres || ["Action"],
+        runtime: props.movie?.runtime || null,
+        id: props.movie?.id || null,
+    }
 
     function validateTitle(value: string) {
         let error;
@@ -88,20 +104,7 @@ export const AddMovie: React.FC<AddMovieProps> = (props) => {
                     : 'add movie'}
                 </h2>
                 <Formik
-                    initialValues={{
-                        title: (props.movie?.title || ""),
-                        tagline: props.movie?.tagline || "image",
-                        vote_average: props.movie?.vote_average || 0,
-                        vote_count: props.movie?.vote_count || 0,
-                        release_date: props.movie?.release_date || "",
-                        poster_path: props.movie?.poster_path || "",
-                        overview: props.movie?.overview || "",
-                        budget: props.movie?.budget || 0,
-                        revenue: props.movie?.revenue || 0,
-                        genres: props.movie?.genres || ["Action"],
-                        runtime: props.movie?.runtime || null,
-                        id: props.movie?.id || null,
-                    }}
+                    initialValues={ formInitialValues }
 
                     onSubmit={async (values) => {
                         isEditMovie
@@ -149,6 +152,15 @@ export const AddMovie: React.FC<AddMovieProps> = (props) => {
                                 rating
                                 <Field name="vote_average" className="add_movie-input add_movie-second_column" type={"number"} placeholder="7.8" />
                             </label>
+{/*                            <Field
+                                id="genres"
+                                name="genres"
+                                items={genres}
+                                label="genre"
+                                component={MultiSelect}
+                                tags={true}
+                                className="add_movie-input add_movie-select"
+                            />*/}
                             <label htmlFor="genres" className="add_movie-label">
                                 genre
                                 <Field name="genres" className="add_movie-input add_movie-select" as="select" isMulti placeholder="Select Genre" validate={validateGenres}>
