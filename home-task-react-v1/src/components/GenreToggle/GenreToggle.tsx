@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import './GenreToggle.css';
 import { GenreItem } from '../GenreItem';
 import { genres } from "../../consts";
