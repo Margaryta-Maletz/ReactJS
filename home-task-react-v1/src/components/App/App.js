@@ -23,7 +23,12 @@ export default function App() {
                     <Route path="/search" exact>
                         <Header />
                     </Route>
-                    <Redirect from="/" to="/search"/>
+                    <Route path="/" exact>
+                        <Redirect to="/search"/>
+                    </Route>
+                    <Route path="/*">
+                        <h1> Error 404 </h1>
+                    </Route>
                 </Switch>
                 <Main />
                 <Footer />
