@@ -6,20 +6,27 @@ import { Footer } from '../Footer';
 import { DetailsMovie } from "../DetailsMovie";
 import { store } from '../../store/store'
 import './index.css'
-import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
 
 export default function App() {
     return (
-        <Router>
-            <Provider store={store}>
-                <Routes>
-                   {/* <Route path="/movies/:id" component={DetailsMovie}/>*/}
-                    <Route path="*" component={Header}/>
-                </Routes>
+        <Provider store={store}>
+            <Router>
+                <Switch>
+                    <Route path="/movies/:id">
+                        <DetailsMovie />
+                    </Route>
+                    <Route path="/search">
+                        <Header />
+                    </Route>
+                    <Route path="/">
+                        <Redirect to="/search"/>
+                    </Route>
+                </Switch>
                 {/*<Header />*/}
                 <Main />
                 <Footer />
-            </Provider>
-        </Router>
+            </Router>
+        </Provider>
     )
 }

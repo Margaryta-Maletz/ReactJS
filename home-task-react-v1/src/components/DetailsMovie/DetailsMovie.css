@@ -1,13 +1,12 @@
 .wrapper-details_movie {
   display: flex;
-  position: fixed;
+  position: sticky;
   top: 0;
-  left: 50%;
-  transform: translate(-50%, 0);
   flex-wrap: wrap;
   background-color: #232323;
   height: 606px;
   z-index: 1;
+  margin-bottom: 10px;
 }
 
 .wrapper-details_movie-card {

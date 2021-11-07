@@ -6,5 +6,6 @@ module.exports = {
     devServer: {
         watchFiles: path.join(__dirname, 'dist'),
         compress: true,
+        historyApiFallback: true,
     }
 }
