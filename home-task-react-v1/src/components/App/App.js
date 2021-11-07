@@ -16,12 +16,18 @@ export default function App() {
                 <Switch>
                     <Route path="/movie=:movieID/">
                         <DetailsMovie />
+                        <Main />
+                        <Footer />
                     </Route>
                     <Route path="/search/:searchQuery">
                         <Header />
+                        <Main />
+                        <Footer />
                     </Route>
                     <Route path="/search" exact>
                         <Header />
+                        <Main />
+                        <Footer />
                     </Route>
                     <Route path="/" exact>
                         <Redirect to="/search"/>
@@ -30,8 +36,6 @@ export default function App() {
                         <h1> Error 404 </h1>
                     </Route>
                 </Switch>
-                <Main />
-                <Footer />
             </Router>
         </Provider>
     )
