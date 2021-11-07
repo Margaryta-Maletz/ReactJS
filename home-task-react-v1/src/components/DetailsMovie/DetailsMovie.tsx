@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import './DetailsMovie.css';
 import { LogoIcon } from '../LogoIcon';
 import { SearchIcon } from "../SearchIcon";
@@ -8,8 +8,8 @@ import { Link, useParams } from "react-router-dom";
 
 export const DetailsMovie: React.FC = () => {
     const { movies } = useSelector((state: IState) => state);
-    const { id } = useParams();
-    const activeMovie = movies.find(value => value.id === Number(id));
+    const { movieID } = useParams();
+    const activeMovie = movies.find(value => value.id === Number(movieID));
 
     return (
         <div className="wrapper-details_movie wrapper">

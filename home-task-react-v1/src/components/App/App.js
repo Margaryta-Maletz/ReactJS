@@ -1,5 +1,5 @@
 import React from 'react';
-import { Provider } from 'react-redux';
+import {Provider} from 'react-redux';
 import { Header } from '../Header';
 import { Main } from '../Main';
 import { Footer } from '../Footer';
@@ -9,21 +9,22 @@ import './index.css'
 import {BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
 
 export default function App() {
+
     return (
         <Provider store={store}>
             <Router>
                 <Switch>
-                    <Route path="/movies/:id">
+                    <Route path="/movie=:movieID/">
                         <DetailsMovie />
                     </Route>
-                    <Route path="/search">
+                    <Route path="/search/:searchQuery">
                         <Header />
                     </Route>
-                    <Route path="/">
-                        <Redirect to="/search"/>
+                    <Route path="/search" exact>
+                        <Header />
                     </Route>
+                    <Redirect from="/" to="/search"/>
                 </Switch>
-                {/*<Header />*/}
                 <Main />
                 <Footer />
             </Router>

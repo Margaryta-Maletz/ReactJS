@@ -5,8 +5,10 @@ import './Header.css';
 import backgroundImage from '../../assets/background-header.jpg';
 import { AddMovie } from "../AddMovie";
 import useToggle from "../UseToggle";
+import {useParams} from "react-router-dom";
 
 export const Header = () => {
+    const { searchQuery } = useParams();
     const backgroundStyle = {
         backgroundImage: 'url(' + backgroundImage + ')',
     }
@@ -20,7 +22,7 @@ export const Header = () => {
                 <button className='header_add-movie' onClick={toggleVisible}>
                     + add movie
                 </button>
-                <SearchInput />
+                <SearchInput searchQuery={searchQuery || ""}/>
             </header>
             {visibleAddMovie && <AddMovie setVisibleAddMovie={toggleVisible}/>}
         </>
