@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import './SearchInput.css';
-import {useHistory, useParams} from "react-router-dom";
+import {useHistory, useLocation, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {IState} from "../../store/types";
 import {setSearchString, setEditMovieList} from '../../store/slice';
@@ -8,6 +8,8 @@ import {setSearchString, setEditMovieList} from '../../store/slice';
 export const SearchInput: React.FC = () => {
     const history = useHistory();
     const dispatch = useDispatch();
+    const location = useLocation();
+    const params = new URLSearchParams(location.search);
     const { searchQuery } = useParams() || "";
     const { searchString } = useSelector((state: IState) => state);
     const handleChangeSearchString = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,7 +21,7 @@ export const SearchInput: React.FC = () => {
     }, []);
 
     const handleOnClick = () => {
-        history.push(`/search/${searchString}`);
+        params ? history.push(`/search/${searchString}?${params}`) : history.push(`/search/${searchString}`);
         dispatch(setEditMovieList(true));
     }
 

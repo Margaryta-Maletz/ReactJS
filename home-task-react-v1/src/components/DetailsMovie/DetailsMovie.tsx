@@ -11,12 +11,18 @@ export const DetailsMovie: React.FC = () => {
     const { movies } = useSelector((state: IState) => state);
     const location = useLocation();
     const params = new URLSearchParams(location.search);
-    const activeMovie = movies.find(value => value.id === Number(params.get('movieID')));
-    if (!activeMovie) { return null };
+    const activeMovie = movies.find(value => value.id === Number(params.get('movie')));
+
+    const handleOnClick = () => {
+        params.delete('movie');
+        params && history.push(`?${params.toString()}`);
+    }
+
+    if (!activeMovie) { return null }
     return (
         <div className="wrapper-details_movie wrapper">
             <LogoIcon />
-            <div className="add_movie-close" onClick={() => history.push(location.pathname)}>
+            <div className="add_movie-close" onClick={handleOnClick}>
                 <SearchIcon />
             </div>
             <div className="wrapper-details_movie-card">

@@ -1,14 +1,15 @@
 import React from 'react';
 import './CardPoster.css';
 import { EditButton} from "../EditButton";
-import {useHistory} from "react-router-dom";
+import {useHistory, useLocation} from "react-router-dom";
 import { IMovie } from '../../store/types';
 
 export const CardPoster: React.FC<IMovie> = (props) => {
     const history = useHistory();
+    const location = useLocation();
     const handleOnClick = () => {
         const params = new URLSearchParams(location.search);
-        params.set('movieID', props.id.toString());
+        params.set('movie', props.id.toString());
         params && history.push(`?${params.toString()}`);
     }
 
