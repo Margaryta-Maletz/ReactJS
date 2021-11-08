@@ -5,16 +5,17 @@ import './Header.css';
 import backgroundImage from '../../assets/background-header.jpg';
 import { AddMovie } from "../AddMovie";
 import useToggle from "../UseToggle";
-import {useParams} from "react-router-dom";
+import {useLocation} from "react-router-dom";
 
 export const Header = () => {
-    const { searchQuery } = useParams();
+    const location = useLocation();
     const backgroundStyle = {
         backgroundImage: 'url(' + backgroundImage + ')',
     }
 
     const [visibleAddMovie, toggleVisible] = useToggle(false);
 
+    if (location.search.includes('movieID')) { return null };
     return (
         <>
             <header className='header wrapper' style={ backgroundStyle }>
@@ -22,7 +23,7 @@ export const Header = () => {
                 <button className='header_add-movie' onClick={toggleVisible}>
                     + add movie
                 </button>
-                <SearchInput searchQuery={searchQuery || ""}/>
+                <SearchInput />
             </header>
             {visibleAddMovie && <AddMovie setVisibleAddMovie={toggleVisible}/>}
         </>

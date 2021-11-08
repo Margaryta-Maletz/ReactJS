@@ -7,7 +7,9 @@ import { IMovie } from '../../store/types';
 export const CardPoster: React.FC<IMovie> = (props) => {
     const history = useHistory();
     const handleOnClick = () => {
-        history.push(`/movie=${props.id}`);
+        const params = new URLSearchParams(location.search);
+        params.set('movieID', props.id.toString());
+        params && history.push(`?${params.toString()}`);
     }
 
     return (

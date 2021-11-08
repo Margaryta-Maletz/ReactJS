@@ -1,22 +1,24 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import {useSelector} from 'react-redux';
 import './DetailsMovie.css';
 import { LogoIcon } from '../LogoIcon';
 import { SearchIcon } from "../SearchIcon";
 import {IState} from '../../store/types';
-import { Link, useParams } from "react-router-dom";
+import {useHistory, useLocation} from "react-router-dom";
 
 export const DetailsMovie: React.FC = () => {
+    const history = useHistory();
     const { movies } = useSelector((state: IState) => state);
-    const { movieID } = useParams();
-    const activeMovie = movies.find(value => value.id === Number(movieID));
-
+    const location = useLocation();
+    const params = new URLSearchParams(location.search);
+    const activeMovie = movies.find(value => value.id === Number(params.get('movieID')));
+    if (!activeMovie) { return null };
     return (
         <div className="wrapper-details_movie wrapper">
             <LogoIcon />
-            <Link to="/" className="add_movie-close">
+            <div className="add_movie-close" onClick={() => history.push(location.pathname)}>
                 <SearchIcon />
-            </Link>
+            </div>
             <div className="wrapper-details_movie-card">
                 <img className='details-movie_image card-poster_image' src={ activeMovie?.poster_path } alt={ activeMovie?.tagline } width="322" height="486" />
                 <div className="wrapper-details_movie-context">

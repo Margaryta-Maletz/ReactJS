@@ -14,25 +14,16 @@ export default function App() {
         <Provider store={store}>
             <Router>
                 <Switch>
-                    <Route path="/movie=:movieID/">
+                    <Route strict path="/search/:searchQuery?" >
+                        <Header />
                         <DetailsMovie />
                         <Main />
                         <Footer />
                     </Route>
-                    <Route path="/search/:searchQuery">
-                        <Header />
-                        <Main />
-                        <Footer />
-                    </Route>
-                    <Route path="/search" exact>
-                        <Header />
-                        <Main />
-                        <Footer />
-                    </Route>
-                    <Route path="/" exact>
+                    <Route exact strict path="/">
                         <Redirect to="/search"/>
                     </Route>
-                    <Route path="/*">
+                    <Route path="*">
                         <h1> Error 404 </h1>
                     </Route>
                 </Switch>
