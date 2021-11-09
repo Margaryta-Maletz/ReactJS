@@ -1,36 +1,39 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import {useSelector} from 'react-redux';
 import './DetailsMovie.css';
 import { LogoIcon } from '../LogoIcon';
 import { SearchIcon } from "../SearchIcon";
-import {IMovie, IState} from '../../store/types';
+import {IState} from '../../store/types';
+import {useHistory, useLocation} from "react-router-dom";
 
-type DetailsMovieProps = {
-    movie?: IMovie,
-    setVisible: (value: boolean) => void,
-}
+export const DetailsMovie: React.FC = () => {
+    const history = useHistory();
+    const { movies } = useSelector((state: IState) => state);
+    const location = useLocation();
+    const params = new URLSearchParams(location.search);
+    const activeMovie = movies.find(value => value.id === Number(params.get('movie')));
 
-export const DetailsMovie: React.FC<DetailsMovieProps> = (props) => {
-
-    const handleChangeVisible = () => {
-        props.setVisible(false);
+    const handleOnClick = () => {
+        params.delete('movie');
+        params && history.push(`?${params.toString()}`);
     }
 
+    if (!activeMovie) { return null }
     return (
         <div className="wrapper-details_movie wrapper">
             <LogoIcon />
-            <div className="add_movie-close" onClick={handleChangeVisible}>
+            <div className="add_movie-close" onClick={handleOnClick}>
                 <SearchIcon />
             </div>
             <div className="wrapper-details_movie-card">
-                <img className='details-movie_image card-poster_image' src={ props?.movie?.poster_path } alt={ props?.movie?.tagline } width="322" height="486" />
+                <img className='details-movie_image card-poster_image' src={ activeMovie?.poster_path } alt={ activeMovie?.tagline } width="322" height="486" />
                 <div className="wrapper-details_movie-context">
-                    <label className="details_movie-title">{props.movie?.title}</label>
-                    <label className="details_movie-rating add_movie-label-second_column">{props.movie?.vote_average.toString()}</label>
-                    <label className="details_movie-genre card-poster_genre">{props.movie?.genres.join(' & ')}</label>
-                    <label className="add_movie-label">{props.movie?.release_date}</label>
-                    <label className="add_movie-label add_movie-label-second_column">{props.movie?.runtime?.toString()}</label>
-                    <textarea className="details_movie-textarea" readOnly={true}>{props.movie?.overview}</textarea>
+                    <label className="details_movie-title">{activeMovie?.title}</label>
+                    <label className="details_movie-rating add_movie-label-second_column">{activeMovie?.vote_average.toString()}</label>
+                    <label className="details_movie-genre card-poster_genre">{activeMovie?.genres.join(' & ')}</label>
+                    <label className="add_movie-label">{activeMovie?.release_date}</label>
+                    <label className="add_movie-label add_movie-label-second_column">{activeMovie?.runtime?.toString()}</label>
+                    <textarea className="details_movie-textarea" readOnly={true}>{activeMovie?.overview}</textarea>
                 </div>
             </div>
         </div>

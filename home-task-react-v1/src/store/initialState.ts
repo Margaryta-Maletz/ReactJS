@@ -1,9 +1,11 @@
 import { IState } from "./types";
 
 export const initialState: IState = {
+  totalAmount: 0,
   activeGenre: null,
   sortItem: 'release_date',
   editMovieList: false,
+  searchString: "",
   loading: false,
   error: null,
   movies: [

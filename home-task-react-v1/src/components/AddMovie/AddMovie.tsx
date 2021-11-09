@@ -8,8 +8,6 @@ import { genres, multiGenres } from "../../consts";
 import axios from "axios";
 import {useDispatch} from "react-redux";
 import {setEditMovieList} from "../../store/slice";
-// @ts-ignore
-import MultiSelect from "elevate-ui/MultiSelect";
 
 type AddMovieProps = {
     movie?: IMovie,
@@ -152,20 +150,13 @@ export const AddMovie: React.FC<AddMovieProps> = (props) => {
                                 rating
                                 <Field name="vote_average" className="add_movie-input add_movie-second_column" type={"number"} placeholder="7.8" />
                             </label>
-{/*                            <Field
-                                id="genres"
-                                name="genres"
-                                tags={true}
-                                items={multiGenres}
-                                component={MultiSelect}
-                            />*/}
                             <label htmlFor="genres" className="add_movie-label">
                                 genre
                                 <Field id="genres"
                                        name="genres"
                                        ags={true}
                                        items={multiGenres}
-                                       component={MultiSelect}
+                                       as="select"
                                        className="add_movie-input add_movie-select"
                                        placeholder="Select Genre"
                                        validate={validateGenres}

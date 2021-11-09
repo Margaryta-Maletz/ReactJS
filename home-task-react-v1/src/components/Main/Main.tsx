@@ -10,8 +10,7 @@ import { IState } from "../../store/types";
 import ErrorBoundary from "../ErrorBoundary";
 
 export const Main = () => {
-    const { movies } = useSelector((state: IState) => state);
-    const count = movies.length;
+    const { totalAmount } = useSelector((state: IState) => state);
 
     return (
         <main className='main wrapper'>
@@ -19,7 +18,7 @@ export const Main = () => {
             <ErrorBoundary>
                 <GenreToggle />
                 <ResultsSort />
-                <ResultCount count={ count.toString() } />
+                <ResultCount count={ totalAmount.toString() } />
                 <CardPosterList />
             </ErrorBoundary>
         </main>

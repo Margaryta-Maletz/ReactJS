@@ -7,6 +7,7 @@ const baseConfig = {
     entry: path.join(__dirname, 'src', 'index.js'),
     output: {
         path: path.join(__dirname, 'dist'),
+        publicPath: '/',
         filename: 'index-bundle.js',
     },
     mode: 'development',

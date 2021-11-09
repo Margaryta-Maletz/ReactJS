@@ -14,9 +14,11 @@ export interface IMovie {
 }
 
 export interface IState {
+    totalAmount: number;
     activeGenre: string | null;
     sortItem: string;
     editMovieList: boolean;
+    searchString: string;
     loading: boolean;
     movies: IMovie[];
     error: any;

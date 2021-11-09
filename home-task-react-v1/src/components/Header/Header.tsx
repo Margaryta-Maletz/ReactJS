@@ -5,14 +5,17 @@ import './Header.css';
 import backgroundImage from '../../assets/background-header.jpg';
 import { AddMovie } from "../AddMovie";
 import useToggle from "../UseToggle";
+import {useLocation} from "react-router-dom";
 
 export const Header = () => {
+    const location = useLocation();
     const backgroundStyle = {
         backgroundImage: 'url(' + backgroundImage + ')',
     }
 
     const [visibleAddMovie, toggleVisible] = useToggle(false);
 
+    if (location.search.includes('movie')) { return null };
     return (
         <>
             <header className='header wrapper' style={ backgroundStyle }>

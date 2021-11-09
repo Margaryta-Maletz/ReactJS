@@ -12,9 +12,12 @@ export const fetchMovies = createAsyncThunk(
         const url = new URL("http://localhost:4000/movies");
 
         const params = {
+            search: state.searchString || '',
+            searchBy: 'title',
             filter: state.activeGenre || '',
             sortBy: state.sortItem,
             sortOrder: state.sortItem === initialState.sortItem ? 'desc' : 'asc',
+            limit: '6',
         };
 
         url.search = new URLSearchParams(params).toString();
@@ -22,7 +25,7 @@ export const fetchMovies = createAsyncThunk(
         const responseJson = await fetch(url.toString());
         const response = await responseJson.json();
 
-        return response.data;
+        return response;
     }
 );
 
@@ -42,10 +45,14 @@ const slice = createSlice({
         setEditMovieList: (state: IState, action) => {
             state.editMovieList = action.payload;
         },
+        setSearchString: (state: IState, action) => {
+            state.searchString = action.payload;
+        },
     },
     extraReducers: (builder) => {
         builder.addCase(fetchMovies.fulfilled, (state, action) => {
-            state.movies = action.payload;
+            state.movies = action.payload.data;
+            state.totalAmount = action.payload.totalAmount;
             state.loading = false;
             state.editMovieList = false;
             state.error = null;
@@ -60,4 +67,4 @@ const slice = createSlice({
 
 export default slice.reducer;
 
-export const { getMoviesStart, setActiveGenre, setSortItem, setEditMovieList } = slice.actions;
+export const { getMoviesStart, setActiveGenre, setSortItem, setEditMovieList, setSearchString } = slice.actions;
