@@ -17,13 +17,15 @@ export const ResultsSort: React.FC = () => {
         const sortBy = params.get('sortBy');
         const genre = params.get('genre');
         genre && genres.includes(genre as Genre) ? dispatch(setActiveGenre(genre)) : params.delete('genre');
-        sortBy ? dispatch(setSortItem(sortBy)) : params.set('sortBy', sortItem);
+        sortBy ? dispatch(setSortItem(sortBy)) : sortItem ? params.set('sortBy', sortItem) : params.delete('sortBy');
         params && history.push(`?${params.toString()}`);
     }, []);
 
     const handleSortItem = (e: React.ChangeEvent<HTMLSelectElement>) => {
         dispatch(setSortItem(e.target.value));
-        params.set('sortBy', e.target.value);
+        e.target.value
+            ? params.set('sortBy', e.target.value)
+            : params.delete('sortBy');
         params && history.push(`?${params.toString()}`);
     }
 
