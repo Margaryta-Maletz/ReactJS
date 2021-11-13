@@ -16,7 +16,7 @@ export interface IMovie {
 export interface IState {
     totalAmount: number;
     activeGenre: string | null;
-    sortItem: string;
+    sortItem: string | null;
     editMovieList: boolean;
     searchString: string;
     loading: boolean;
