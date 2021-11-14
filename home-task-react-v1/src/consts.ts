@@ -9,7 +9,7 @@ export enum Genre {
 }
 
 export enum SortList {
-    "" = '',
+    "" = 'rating',
     release_date = 'Release Date',
     title = 'Title',
     genre = 'Genre',

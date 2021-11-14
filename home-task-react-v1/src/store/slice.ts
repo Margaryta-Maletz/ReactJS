@@ -15,8 +15,8 @@ export const fetchMovies = createAsyncThunk(
             search: state.searchString || '',
             searchBy: 'title',
             filter: state.activeGenre || '',
-            sortBy: state.sortItem,
-            sortOrder: state.sortItem === initialState.sortItem ? 'desc' : 'asc',
+            sortBy: state.sortItem || 'vote_average',
+            sortOrder: state.sortItem === 'release_date' ? 'desc' : 'asc',
             limit: '6',
         };
 

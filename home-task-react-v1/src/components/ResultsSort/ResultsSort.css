@@ -11,6 +11,7 @@
 }
 
 .results-sort_list {
+    width: 150px;
     margin-left: 31px;
     font-family: Montserrat;
     font-style: normal;
@@ -22,8 +23,12 @@
     color: white;
     background: none;
     border: none;
+    appearance: none;
+    background: url("../../../public/images/svg/arrow.svg") no-repeat right;
+
 }
 
 .result-sort-item {
     background: #424242;
+    border: none;
 }
