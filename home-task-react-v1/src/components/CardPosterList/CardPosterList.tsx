@@ -6,7 +6,6 @@ import {fetchMovies, getMoviesStart} from '../../store/slice';
 import { IState } from '../../store/types';
 
 export const CardPosterList: React.FC = () => {
-
     const dispatch = useDispatch();
     const { movies, activeGenre, sortItem, editMovieList } = useSelector((state: IState) => state);
 
