@@ -1,9 +1,9 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import './ResultsSort.css';
-import {Genre, genres, sortList} from '../../consts';
+import {sortList} from '../../consts';
 import {useDispatch, useSelector} from "react-redux";
 import {IState} from "../../store/types";
-import {setActiveGenre, setSortItem} from "../../store/slice";
+import {setSortItem} from "../../store/slice";
 import {useHistory, useLocation} from "react-router-dom";
 
 export const ResultsSort: React.FC = () => {
@@ -12,14 +12,6 @@ export const ResultsSort: React.FC = () => {
     const history = useHistory();
     const { sortItem } = useSelector((state: IState) => state);
     const params = new URLSearchParams(location.search);
-
-    useEffect(() => {
-        const sortBy = params.get('sortBy');
-        const genre = params.get('genre');
-        genre && genres.includes(genre as Genre) ? dispatch(setActiveGenre(genre)) : params.delete('genre');
-        sortBy ? dispatch(setSortItem(sortBy)) : sortItem ? params.set('sortBy', sortItem) : params.delete('sortBy');
-        params && history.push(`?${params.toString()}`);
-    }, []);
 
     const handleSortItem = (e: React.ChangeEvent<HTMLSelectElement>) => {
         dispatch(setSortItem(e.target.value));

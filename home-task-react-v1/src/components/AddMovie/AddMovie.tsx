@@ -36,8 +36,8 @@ export const AddMovie: React.FC<AddMovieProps> = (props) => {
         let error;
         if (!value) {
             error = 'Required';
-        } else if (value.length > 30) {
-            error = 'Must be 30 characters or less';
+        } else if (value.length > 50) {
+            error = 'Must be 50 characters or less';
         }
         return error;
     }
@@ -169,7 +169,7 @@ export const AddMovie: React.FC<AddMovieProps> = (props) => {
                             </label>
                             <label htmlFor="overview" className="add_movie-label">
                                 overview
-                                <Field name="overview" className="add_movie-input add_movie-textarea" type="textarea" placeholder="Movie description" validate={validateOverview} autocomplete="off"/>
+                                <Field name="overview" className="add_movie-input add_movie-textarea" as="textarea" placeholder="Movie description" validate={validateOverview} autocomplete="off"/>
                                 {errors.overview && touched.overview && <div className="add_movie-error">{errors.overview}</div>}
                             </label>
                             <div className='add_movie-buttons_block'>
