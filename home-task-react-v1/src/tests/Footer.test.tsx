@@ -4,7 +4,7 @@ import { Footer } from '../components/Footer/';
 
 describe('make snapshot', () => {
     test('renders', () => {
-        const { asFragment } = render(<Footer />);
-        expect(asFragment).toMatchSnapshot();
+        const { container } = render(<Footer />);
+        expect(container).toMatchSnapshot();
     });
 });

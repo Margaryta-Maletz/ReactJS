@@ -3,11 +3,12 @@ module.exports = {
   roots: ['<rootDir>/src'],
   collectCoverageFrom: ['src/**/*.{ts,tsx}'],
   preset: 'ts-jest',
-  testEnvironment: 'node',
+  testEnvironment: 'jsdom',
   moduleNameMapper:{
-    "^.+.(css)$": "jest-transform-stub"
+    "\\.css$": "identity-obj-proxy"
   },
-  transform: {
-    ".+\\.(css)$": "jest-transform-stub"
+  "transform": {
+    '^.+\\.ts?$': 'ts-jest',
+    "^.+\\.jsx?$": "babel-jest"
   }
 };

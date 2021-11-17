@@ -1,8 +1,8 @@
 import React from "react";
 import { render } from '@testing-library/react';
-import { ResultsSort } from '../components/ResultsSort/';
-import {Provider} from "react-redux";
-import { store } from '../store/store'
+import { Main } from '../components/Main/';
+import { Provider } from "react-redux";
+import { store } from "../store/store";
 
 jest.mock("react-router-dom", () => ({
     ...jest.requireActual("react-router-dom"),
@@ -14,15 +14,17 @@ jest.mock("react-router-dom", () => ({
         location: {
             pathname: "localhost:8080/search/" + path
         }
-    })
+    }),
+    useParams: jest.fn().mockReturnValue({ searchQuery: '' }),
 }));
 
+jest.mock('../components/ErrorBoundary/');
 
 describe('make snapshot', () => {
     test('renders', () => {
         const { container } = render(
             <Provider store={store}>
-                <ResultsSort />
+                <Main />
             </Provider>
         );
         expect(container).toMatchSnapshot();

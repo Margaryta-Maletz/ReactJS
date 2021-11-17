@@ -1,8 +1,8 @@
 import React from "react";
 import { render } from '@testing-library/react';
-import { ResultsSort } from '../components/ResultsSort/';
+import { CardPoster } from '../components/CardPoster/';
 import {Provider} from "react-redux";
-import { store } from '../store/store'
+import {store} from "../store/store";
 
 jest.mock("react-router-dom", () => ({
     ...jest.requireActual("react-router-dom"),
@@ -17,12 +17,12 @@ jest.mock("react-router-dom", () => ({
     })
 }));
 
-
 describe('make snapshot', () => {
+    const movie = store.getState().movies[0];
     test('renders', () => {
         const { container } = render(
             <Provider store={store}>
-                <ResultsSort />
+                <CardPoster {...movie}/>
             </Provider>
         );
         expect(container).toMatchSnapshot();
