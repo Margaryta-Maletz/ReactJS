@@ -7,7 +7,8 @@
     "start": "webpack serve --open --hot --config ./webpack.config.js --env mode=dev",
     "build": "webpack --config ./webpack.config.js --env mode=prod",
     "test": "jest",
-    "test-coverage": "jest --coverage --no-cache"
+    "test-coverage": "jest --coverage --no-cache",
+    "e2e": "cypress open"
   },
   "keywords": [],
   "author": "Marharyta Malets",

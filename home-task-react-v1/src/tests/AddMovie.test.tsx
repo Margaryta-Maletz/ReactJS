@@ -6,7 +6,7 @@ import {Provider} from "react-redux";
 import {store} from "../store/store";
 
 describe('make snapshot', () => {
-    test('renders without movie', () => {
+    it('renders without movie', () => {
         const { container } = render(
             <Provider store={store}>
                 <AddMovie setVisibleAddMovie={(value=false) => {return value}}/>
@@ -14,7 +14,7 @@ describe('make snapshot', () => {
         );
         expect(container).toMatchSnapshot();
     });
-    test('renders with movie', () => {
+    it('renders with movie', () => {
         const { container } = render(
             <Provider store={store}>
                 <AddMovie movie={initialState.movies[0]} setVisibleAddMovie={(value=false) => {return value}}/>

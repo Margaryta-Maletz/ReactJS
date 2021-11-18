@@ -19,7 +19,7 @@ jest.mock("react-router-dom", () => ({
 
 
 describe('make snapshot', () => {
-    test('renders', () => {
+    it('renders', () => {
         const { container } = render(
             <Provider store={store}>
                 <ResultsSort />

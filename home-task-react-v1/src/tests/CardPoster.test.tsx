@@ -19,7 +19,7 @@ jest.mock("react-router-dom", () => ({
 
 describe('make snapshot', () => {
     const movie = store.getState().movies[0];
-    test('renders', () => {
+    it('renders', () => {
         const { container } = render(
             <Provider store={store}>
                 <CardPoster {...movie}/>
