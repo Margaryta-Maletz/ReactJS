@@ -5,7 +5,7 @@ module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'jsdom',
   moduleNameMapper:{
-    "\\.css$": "identity-obj-proxy"
+    "\\.(css|jpg)$": "identity-obj-proxy",
   },
   "transform": {
     '^.+\\.ts?$': 'ts-jest',

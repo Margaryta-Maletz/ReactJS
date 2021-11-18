@@ -1,4 +1,4 @@
-import React, {memo, useEffect} from 'react';
+import React, {memo} from 'react';
 import './SearchInput.css';
 import {useHistory, useLocation, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
