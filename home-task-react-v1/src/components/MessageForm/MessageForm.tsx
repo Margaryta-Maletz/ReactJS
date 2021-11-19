@@ -1,11 +1,11 @@
 import './MessageForm.css';
 import { LogoIcon } from '../LogoIcon';
 import { CloseButton } from '../CloseButton';
-import { Formik, Field, Form } from 'formik';
+import { Formik, Form } from 'formik';
 import axios from "axios";
-import {useDispatch, useSelector} from "react-redux";
-import {IState} from "../../store/types";
+import {useDispatch} from "react-redux";
 import {setEditMovieList} from "../../store/slice";
+import React from "react";
 
 type SetVisibleProps = {
     setVisible: (visible: boolean) => void,
@@ -19,7 +19,6 @@ export const MessageForm: React.FC<SetVisibleProps> = ({ setVisible, title,messa
         setVisible(false);
     }
     const dispatch = useDispatch();
-    const { editMovieList } = useSelector((state: IState) => state);
     return (
         <div className="wrapper wrapper-add_movie-background wrapper-background">
             <LogoIcon />
@@ -28,7 +27,7 @@ export const MessageForm: React.FC<SetVisibleProps> = ({ setVisible, title,messa
                     id: deletedId,
                 }}
 
-                onSubmit={async (values) => {
+                onSubmit={async () => {
                     handleChangeVisible();
                     await
                         axios.delete(`http://localhost:4000/movies/${deletedId}`)

@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`make snapshot renders 1`] = `
+<div>
+  <li
+    class="genre_item active"
+  >
+    All
+  </li>
+</div>
+`;

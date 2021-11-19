@@ -15,17 +15,15 @@ export const fetchMovies = createAsyncThunk(
             search: state.searchString || '',
             searchBy: 'title',
             filter: state.activeGenre || '',
-            sortBy: state.sortItem,
-            sortOrder: state.sortItem === initialState.sortItem ? 'desc' : 'asc',
+            sortBy: state.sortItem || 'vote_average',
+            sortOrder: state.sortItem === 'release_date' || state.sortItem === '' ? 'desc' : 'asc',
             limit: '6',
         };
 
         url.search = new URLSearchParams(params).toString();
 
         const responseJson = await fetch(url.toString());
-        const response = await responseJson.json();
-
-        return response;
+        return  await responseJson.json();
     }
 );
 

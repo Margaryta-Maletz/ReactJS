@@ -1,13 +1,14 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import { Formik, Field, Form } from 'formik';
 import './AddMovie.css';
 import { LogoIcon } from '../LogoIcon';
 import { CloseButton } from '../CloseButton';
 import {IMovie} from '../../store/types';
-import { genres, multiGenres } from "../../consts";
+import {Genre, genres, multiGenres} from "../../consts";
 import axios from "axios";
 import {useDispatch} from "react-redux";
 import {setEditMovieList} from "../../store/slice";
+import {CustomMultiSelect} from "./CustomMultiSelect";
 
 type AddMovieProps = {
     movie?: IMovie,
@@ -26,7 +27,7 @@ export const AddMovie: React.FC<AddMovieProps> = (props) => {
         overview: props.movie?.overview || "",
         budget: props.movie?.budget || 0,
         revenue: props.movie?.revenue || 0,
-        genres: props.movie?.genres || ["Action"],
+        genres: props.movie?.genres || [],
         runtime: props.movie?.runtime || null,
         id: props.movie?.id || null,
     }
@@ -35,8 +36,8 @@ export const AddMovie: React.FC<AddMovieProps> = (props) => {
         let error;
         if (!value) {
             error = 'Required';
-        } else if (value.length > 30) {
-            error = 'Must be 30 characters or less';
+        } else if (value.length > 50) {
+            error = 'Must be 50 characters or less';
         }
         return error;
     }
@@ -73,7 +74,7 @@ export const AddMovie: React.FC<AddMovieProps> = (props) => {
         return error;
     }
 
-    function validateGenres(value: string) {
+    function validateGenres(value: string[]) {
         let error;
         if (!value) {
             error = 'Required';
@@ -143,38 +144,32 @@ export const AddMovie: React.FC<AddMovieProps> = (props) => {
                             </label>
                             <label htmlFor="poster_path" className="add_movie-label">
                                 movie URL
-                                <Field name="poster_path" className="add_movie-input" type="text" placeholder="https://" validate={validatePosterPath}/>
+                                <Field name="poster_path" className="add_movie-input" type="text" placeholder="https://" validate={validatePosterPath} autocomplete="off"/>
                                 {errors.poster_path && touched.poster_path && <div className="add_movie-error">{errors.poster_path}</div>}
                             </label>
                             <label htmlFor="vote_average" className="add_movie-label add_movie-second_column">
                                 rating
-                                <Field name="vote_average" className="add_movie-input add_movie-second_column" type={"number"} placeholder="7.8" />
+                                <Field name="vote_average" className="add_movie-input add_movie-second_column" type={"number"} step={0.1} placeholder="7.8" />
                             </label>
                             <label htmlFor="genres" className="add_movie-label">
                                 genre
-                                <Field id="genres"
-                                       name="genres"
-                                       ags={true}
-                                       items={multiGenres}
-                                       as="select"
-                                       className="add_movie-input add_movie-select"
-                                       placeholder="Select Genre"
-                                       validate={validateGenres}
-                                >
-                                    {errors.genres && touched.genres && <div className="add_movie-error">{errors.genres}</div>}
-{/*                                    {genres.map((elem) => (
-                                        <option className='add_movie-select-item' key={elem} value={elem}>{elem}</option>
-                                    ))}*/}
-                                </Field>
+                                <Field
+                                    className="add_movie-select"
+                                    name="genres"
+                                    options={multiGenres}
+                                    component={CustomMultiSelect}
+                                    placeholder="Select Genre"
+                                    isMulti={true}
+                                />
                             </label>
                             <label htmlFor="runtime" className="add_movie-label add_movie-second_column">
                                 runtime
-                                <Field name="runtime" className="add_movie-input add_movie-second_column" type={"number"} placeholder="minutes" validate={validateRuntime}/>
+                                <Field name="runtime" className="add_movie-input add_movie-second_column" type={"number"} step={5.0} placeholder="minutes" validate={validateRuntime} autocomplete="off"/>
                                 {errors.runtime && touched.runtime && <div className="add_movie-error">{errors.runtime}</div>}
                             </label>
                             <label htmlFor="overview" className="add_movie-label">
                                 overview
-                                <Field name="overview" className="add_movie-input add_movie-textarea" type="textarea" placeholder="Movie description" validate={validateOverview}/>
+                                <Field name="overview" className="add_movie-input add_movie-textarea" as="textarea" placeholder="Movie description" validate={validateOverview} autocomplete="off"/>
                                 {errors.overview && touched.overview && <div className="add_movie-error">{errors.overview}</div>}
                             </label>
                             <div className='add_movie-buttons_block'>

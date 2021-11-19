@@ -15,7 +15,7 @@ export const Header = () => {
 
     const [visibleAddMovie, toggleVisible] = useToggle(false);
 
-    if (location.search.includes('movie')) { return null };
+    if (location.search?.includes('movie')) { return null };
     return (
         <>
             <header className='header wrapper' style={ backgroundStyle }>

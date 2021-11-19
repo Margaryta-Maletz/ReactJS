@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`make snapshot renders 1`] = `
+<div>
+  <div
+    class="card-poster_wrapper"
+  >
+    <img
+      alt="Don't miss the climax"
+      class="card-poster_image"
+      height="455"
+      src="https://image.tmdb.org/t/p/w500/3kcEGnYBHDeqmdYf8ZRbKdfmlUy.jpg"
+      width="322"
+    />
+    <div
+      class="edit-button"
+    >
+      <svg
+        fill="none"
+        height="44"
+        viewBox="0 0 44 44"
+        width="44"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g
+          filter="url(#filter0_d)"
+        >
+          <circle
+            cx="22"
+            cy="22"
+            fill="#2A202D"
+            r="18"
+          />
+        </g>
+        <circle
+          cx="22"
+          cy="15"
+          fill="white"
+          r="2"
+        />
+        <circle
+          cx="22"
+          cy="22.5"
+          fill="white"
+          r="2"
+        />
+        <circle
+          cx="22"
+          cy="30"
+          fill="white"
+          r="2"
+        />
+        <defs>
+          <filter
+            color-interpolation-filters="sRGB"
+            filterUnits="userSpaceOnUse"
+            height="44"
+            id="filter0_d"
+            width="44"
+            x="0"
+            y="0"
+          >
+            <feflood
+              flood-opacity="0"
+              result="BackgroundImageFix"
+            />
+            <fecolormatrix
+              in="SourceAlpha"
+              result="hardAlpha"
+              type="matrix"
+              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+            />
+            <feoffset />
+            <fegaussianblur
+              stdDeviation="2"
+            />
+            <fecolormatrix
+              type="matrix"
+              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.196596 0"
+            />
+            <feblend
+              in2="BackgroundImageFix"
+              mode="normal"
+              result="effect1_dropShadow"
+            />
+            <feblend
+              in="SourceGraphic"
+              in2="effect1_dropShadow"
+              mode="normal"
+              result="shape"
+            />
+          </filter>
+        </defs>
+      </svg>
+    </div>
+    <h4
+      class="card-poster_title"
+    >
+      Fifty Shades Freed
+    </h4>
+    <p
+      class="card-poster_release-date"
+    >
+      2018
+    </p>
+    <p
+      class="card-poster_genre"
+    >
+      Drama & Romance
+    </p>
+  </div>
+</div>
+`;

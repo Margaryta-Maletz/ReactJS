@@ -29,7 +29,7 @@ export const DetailsMovie: React.FC = () => {
                 <img className='details-movie_image card-poster_image' src={ activeMovie?.poster_path } alt={ activeMovie?.tagline } width="322" height="486" />
                 <div className="wrapper-details_movie-context">
                     <label className="details_movie-title">{activeMovie?.title}</label>
-                    <label className="details_movie-rating add_movie-label-second_column">{activeMovie?.vote_average.toString()}</label>
+                    <label className="details_movie-rating add_movie-label-second_column">{activeMovie?.vote_average.toString(10)}</label>
                     <label className="details_movie-genre card-poster_genre">{activeMovie?.genres.join(' & ')}</label>
                     <label className="add_movie-label">{activeMovie?.release_date}</label>
                     <label className="add_movie-label add_movie-label-second_column">{activeMovie?.runtime?.toString()}</label>
