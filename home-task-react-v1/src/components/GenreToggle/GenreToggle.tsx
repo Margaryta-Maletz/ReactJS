@@ -1,7 +1,17 @@
 import React from "react";
 import './GenreToggle.css';
 import { GenreItem } from '../GenreItem';
-import { genres } from "../../consts";
+/*import { genres } from "../../consts";*/
+
+const genres = [
+    'Action',
+    'Adventure',
+    'Animation',
+    'Comedy',
+    'Drama',
+    'Family',
+    'Fantasy',
+];
 
 export const GenreToggle: React.FC = () => {
     return (

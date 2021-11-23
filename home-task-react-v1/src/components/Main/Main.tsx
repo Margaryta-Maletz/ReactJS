@@ -7,7 +7,7 @@ import './Main.css';
 /*import {useDispatch, useSelector} from "react-redux";*/
 import {IMovie} from "../../store/types";
 // @ts-ignore
-import ErrorBoundary from "../ErrorBoundary";
+/*import ErrorBoundary from "../ErrorBoundary";*/
 /*import {useHistory, useLocation, useParams} from "react-router-dom";
 import {Genre, genres, SortList, sortListItems} from "../../consts";
 import {fetchMovies, getMoviesStart, setActiveGenre, setSearchString, setSortItem} from "../../store/slice";*/
@@ -41,8 +41,8 @@ export const Main:React.FC<MainProps> = ({totalAmount, movies}) => {
     return (
         <main className='main wrapper'>
             <div className='top-border wrapper'/>
-{/*                <GenreToggle />*/}
-{/*                <ResultsSort />*/}
+            <GenreToggle />
+            <ResultsSort sortItem={''}/>
             <ResultCount count={ totalAmount.toString() } />
             <CardPosterList movies={movies}/>
         </main>
