@@ -1,17 +1,16 @@
 import React from 'react';
-import {Provider} from 'react-redux';
+/*import {Provider} from 'react-redux';
 import { Header } from '../Header';
 import { Main } from '../Main';
 import { Footer } from '../Footer';
 import { DetailsMovie } from "../DetailsMovie";
-import { store } from '../../store/store'
-import './index.css'
-import {BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
+import { store } from '../../store/store';
+import './index.css';
+import {BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";*/
 
 export default function App() {
-
     return (
-        <Provider store={store}>
+/*        <Provider store={store}>
             <Router>
                 <Switch>
                     <Route strict path="/search/:searchQuery?" >
@@ -28,6 +27,7 @@ export default function App() {
                     </Route>
                 </Switch>
             </Router>
-        </Provider>
+        </Provider>*/
+        <h1>Hello</h1>
     )
 }

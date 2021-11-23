@@ -1,11 +1,14 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import { CardPoster } from '../CardPoster';
-import './CardPosterList.css';
-import { IState } from '../../store/types';
+import { IMovie } from '../../store/types';
+import './CardPosterList.css'
 
-export const CardPosterList: React.FC = () => {
-    const { movies } = useSelector((state: IState) => state);
+interface CardPosterListProps {
+    movies: IMovie[];
+}
+
+export const CardPosterList: React.FC<CardPosterListProps> = (props) => {
+    const { movies } = props;
 
     return (
         <div className="card-poster-list_wrapper">

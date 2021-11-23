@@ -14,7 +14,6 @@ export enum SortList {
     title = 'Title',
     genre = 'Genre',
 }
-
 export const genres = Object.values(Genre);
 export const sortListItems = Object.keys(SortList);
 export const sortList = Object.entries(SortList).map(([id, value]) => ({ id, value}));

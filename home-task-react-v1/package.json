@@ -8,7 +8,8 @@
     "build": "webpack --config ./webpack.config.js --env mode=prod",
     "test": "jest",
     "test-coverage": "jest --coverage --no-cache",
-    "e2e": "cypress open"
+    "e2e": "cypress open",
+    "dev": "next"
   },
   "keywords": [],
   "author": "Marharyta Malets",
@@ -17,9 +18,12 @@
     "@reduxjs/toolkit": "^1.6.2",
     "@types/react-redux": "^7.1.20",
     "@types/react-select": "2.0.17",
+    "@zeit/next-css": "^1.0.1",
     "axios": "^0.24.0",
+    "babel-plugin-module-resolver": "^4.1.0",
     "cypress": "^9.0.0",
     "formik": "^2.2.9",
+    "next": "^12.0.4",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -29,7 +33,8 @@
     "react-test-renderer": "^17.0.2",
     "redux": "^4.1.1",
     "redux-devtools-extension": "^2.13.9",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^5.3.3"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
@@ -44,6 +49,7 @@
     "@types/react-dom": "^17.0.9",
     "@types/react-router-dom": "^5.3.2",
     "@types/react-test-renderer": "^17.0.1",
+    "@zeit/next-less": "^1.0.1",
     "babel-jest": "^27.3.1",
     "babel-loader": "^8.2.2",
     "clean-webpack-plugin": "^4.0.0",
@@ -53,13 +59,15 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.3.1",
     "jest-transform-stub": "^2.0.0",
+    "less": "^4.1.2",
+    "less-loader": "5",
     "querystring": "^0.2.1",
     "react-awesome-modal": "^2.0.5",
     "style-loader": "^3.2.1",
     "ts-jest": "^27.0.7",
     "ts-loader": "^9.2.6",
     "typescript": "^4.4.4",
-    "webpack": "^5.53.0",
+    "webpack": "^4.46.0",
     "webpack-cli": "^4.8.0",
     "webpack-dev-server": "^4.2.1"
   }

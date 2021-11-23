@@ -1,1 +1,1 @@
-export { CloseButton, CloseButtonSize } from './CloseButton';
+export { CloseButton } from './CloseButton';
