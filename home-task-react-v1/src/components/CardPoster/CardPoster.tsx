@@ -2,7 +2,8 @@ import React from 'react';
 /*import { EditButton} from "../EditButton";
 import {useHistory, useLocation} from "react-router-dom";*/
 import { IMovie } from '../../store/types';
-import './CardPoster.css';
+import styles from './CardPoster.module.css';
+import Link from 'next/link';
 
 export const CardPoster: React.FC<IMovie> = (props) => {
 /*    const history = useHistory();
@@ -14,12 +15,14 @@ export const CardPoster: React.FC<IMovie> = (props) => {
     }
 
     return (
-        <div className='card-poster_wrapper'>
-            <img className='card-poster_image' src={ props?.poster_path } alt={ props?.tagline}  width="322" height="455" onClick={handleOnClick}/>
+        <div className={styles.wrapper}>
+            <Link href={`/search/${props.id}`}>
+                <img src={ props?.poster_path } alt={ props?.tagline}  width="322" height="455"/>
+            </Link>
  {/*           <EditButton { ...props }/>*/}
-            <h4 className='card-poster_title'>{ props?.title }</h4>
-            <p className='card-poster_release-date'>{ props?.release_date.slice(0, 4) }</p>
-            <p className='card-poster_genre'>{ props?.genres.join(' & ') }</p>
+            <h4 className={styles.title}>{ props?.title }</h4>
+            <p className={styles.date}>{ props?.release_date.slice(0, 4) }</p>
+            <p className={styles.genre}>{ props?.genres.join(' & ') }</p>
         </div>
     )
 }

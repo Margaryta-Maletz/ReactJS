@@ -7,11 +7,10 @@
     column-gap: 20px;
 }
 
-.top-border.wrapper {
+.wrapper.topBorder {
     position: absolute;
     width: 1080px;
     height: 45px;
     border-bottom: 3px solid #555555;
     z-index: -1;
 }
-

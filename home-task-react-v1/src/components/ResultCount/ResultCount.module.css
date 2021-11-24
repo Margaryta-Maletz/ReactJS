@@ -1,4 +1,4 @@
-.results-count_label {
+.label {
     font-family: Montserrat;
     font-style: normal;
     font-weight: normal;
@@ -8,6 +8,6 @@
     margin-bottom: 27px;
 }
 
-.results-count_label_bold {
+.labelBold {
     font-weight: 700;
 }

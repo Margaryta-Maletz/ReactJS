@@ -1,0 +1,13 @@
+.wrapper {
+    margin-bottom: 24px;
+}
+
+.list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    column-gap: 30px;
+    padding: 0;
+    margin: 0;
+}

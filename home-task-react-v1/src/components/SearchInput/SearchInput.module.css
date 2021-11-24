@@ -1,9 +1,9 @@
-.search-input_wrapper {
+.wrapper {
     margin: 0 auto;
     height: 145px;
 }
 
-.search-input_header {
+.header {
     font-family: Montserrat;
     font-style: normal;
     font-weight: 300;
@@ -16,7 +16,7 @@
     margin: 0 0 38px;
 }
 
-.search-input_input {
+.input {
     width: 673px;
     height: 57px;
     mix-blend-mode: normal;
@@ -34,7 +34,7 @@
     border: none;
 }
 
-.search-input_button {
+.button {
     width: 233px;
     height: 57px;
     background: #F65261;

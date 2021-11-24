@@ -3,7 +3,7 @@ import { GenreToggle } from '../GenreToggle';
 import { ResultsSort } from '../ResultsSort';
 import { ResultCount } from '../ResultCount';
 import { CardPosterList } from '../CardPosterList';
-import './Main.css';
+import styles from './Main.module.css';
 /*import {useDispatch, useSelector} from "react-redux";*/
 import {IMovie} from "../../store/types";
 // @ts-ignore
@@ -39,8 +39,8 @@ export const Main:React.FC<MainProps> = ({totalAmount, movies}) => {
     }, [activeGenre, sortItem, editMovieList]);*/
 
     return (
-        <main className='main wrapper'>
-            <div className='top-border wrapper'/>
+        <main className={`wrapper ${styles.main}`}>
+            <div className={`wrapper ${styles.topBorder}`}/>
             <GenreToggle />
             <ResultsSort sortItem={''}/>
             <ResultCount count={ totalAmount.toString() } />

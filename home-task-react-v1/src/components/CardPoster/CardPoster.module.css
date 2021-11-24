@@ -1,4 +1,4 @@
-.card-poster_wrapper {
+.wrapper {
     width: 322px;
     position: relative;
     display: flex;
@@ -12,7 +12,7 @@
     mix-blend-mode: normal;
 }
 
-.card-poster_title {
+.title {
     font-size: 18px;
     line-height: 22px;
     opacity: 0.7;
@@ -20,7 +20,7 @@
     width: 75%;
 }
 
-.card-poster_genre {
+.genre {
     font-size: 14px;
     line-height: 17px;
     opacity: 0.5;
@@ -29,7 +29,7 @@
     margin: 0 0 50px;
 }
 
-.card-poster_release-date {
+.date {
     width: 66px;
     height: 26px;
     border: 1px solid #555555;

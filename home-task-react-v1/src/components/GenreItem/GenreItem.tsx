@@ -1,4 +1,5 @@
 import React from "react";
+import styles from './GenreItem.module.css';
 /*import {useDispatch, useSelector} from "react-redux";
 import {IState} from "../../store/types";
 import {setActiveGenre} from "../../store/slice";*/
@@ -26,8 +27,8 @@ export const GenreItem: React.FC<GenreItemProp> = ({ title, value }) => {
     return (
         <>
             {value === null
-                ? <li className='genre_item active'>{title || value}</li>
-                : <li className='genre_item' onClick={handleSelectGenre}>{title || value}</li>}
+                ? <li className={`${styles.item} ${styles.active}`}>{title || value}</li>
+                : <li className={styles.item} onClick={handleSelectGenre}>{title || value}</li>}
         </>
     )
 }

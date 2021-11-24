@@ -1,10 +1,10 @@
 import React from 'react';
 import { LogoIcon } from '../LogoIcon';
-import './Footer.css';
+import styles from './Footer.module.css';
 
 export const Footer: React.FC = () => {
     return (
-        <footer className='footer wrapper'>
+        <footer className={`wrapper ${styles.footer}`}>
             <LogoIcon />
         </footer>
     )

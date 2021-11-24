@@ -1,5 +1,5 @@
 import React from 'react';
-import './ResultsSort.css';
+import styles from './ResultsSort.module.css';
 /*import {useDispatch, useSelector} from "react-redux";
 import {IState} from "../../store/types";
 import {setSortItem} from "../../store/slice";
@@ -33,11 +33,11 @@ export const ResultsSort: React.FC<ResultsSortProps> = ({sortItem}) => {
 
     return (
         <>
-            <label className='results-sort_header'>
+            <label className={styles.header}>
                 sort by
-                <select className='results-sort_list' value={sortItem} onChange={handleSortItem}>
+                <select className={styles.list} value={sortItem} onChange={handleSortItem}>
                     {sortList.map((elem) => (
-                        <option key={elem.id} value={elem.id} className='result-sort-item'>{elem.value}</option>
+                        <option key={elem.id} value={elem.id} className={styles.item}>{elem.value}</option>
                     ))}
                 </select>
             </label>

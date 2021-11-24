@@ -1,5 +1,5 @@
 import React, {memo} from 'react';
-import './SearchInput.css';
+import styles from './SearchInput.module.css';
 import {useHistory, useLocation, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {IState} from "../../store/types";
@@ -21,10 +21,10 @@ export const SearchInput: React.FC = memo(() => {
     }
 
     return (
-        <div className="search-input_wrapper">
-            <h3 className='search-input_header'>Find your movie</h3>
-            <input className='search-input_input' placeholder='What do you want to watch?' value={""} onChange={handleChangeSearchString} onKeyDown={(e) => (e.code === 'Enter' && handleOnClick())   }/>
-            <button className='search-input_button' onClick={handleOnClick}> search </button>
+        <div className={styles.wrapper}>
+            <h3 className={styles.header}>Find your movie</h3>
+            <input className={styles.input} placeholder='What do you want to watch?' value={""} onChange={handleChangeSearchString} onKeyDown={(e) => (e.code === 'Enter' && handleOnClick())   }/>
+            <button className={styles.button} onClick={handleOnClick}> search </button>
         </div>
     )
 })

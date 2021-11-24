@@ -1,7 +1,7 @@
 import React from 'react';
 import { LogoIcon } from '../LogoIcon';
 import { SearchInput } from '../SearchInput';
-import './Header.css';
+import styles from './Header.module.css';
 import backgroundImage from '../../assets/background-header.jpg';
 import { AddMovie } from "../AddMovie";
 import useToggle from "../UseToggle";
@@ -18,9 +18,9 @@ export const Header = () => {
 /*    if (location.search?.includes('movie')) { return null };*/
     return (
         <>
-            <header className='header wrapper' style={ backgroundStyle }>
+            <header className={`wrapper ${styles.header}`} style={ backgroundStyle }>
                 <LogoIcon />
-                <button className='header_add-movie' onClick={toggleVisible}>
+                <button className={styles.addMovie} onClick={toggleVisible}>
                     + add movie
                 </button>
                 <SearchInput />

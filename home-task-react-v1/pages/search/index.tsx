@@ -1,17 +1,17 @@
 import 'regenerator-runtime/runtime';
-import React from "react";
-import {Main} from '../src/components/Main'
-import {IMovie} from "../src/store/types";
-import {Footer} from "../src/components/Footer";
-import {Header} from "../src/components/Header";
+import React from 'react';
+import {Main} from '../../src/components/Main'
+import {IMovie} from '../../src/store/types';
+import {Footer} from '../../src/components/Footer';
+import {Header} from '../../src/components/Header';
+import {BaseRouter} from "next/dist/shared/lib/router/router";
 
-
-interface HomeProps {
+interface SearchProps {
     totalAmount: number,
     movies: IMovie[]
 }
 
-const Search: React.FC<HomeProps> = ({totalAmount,movies}) => {
+const Search: React.FC<SearchProps> = ({totalAmount,movies}) => {
     return <>
         <Header />
         <Main totalAmount={totalAmount} movies={movies}/>
@@ -19,14 +19,14 @@ const Search: React.FC<HomeProps> = ({totalAmount,movies}) => {
     </>
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps(router: BaseRouter) {
     // Call an external API endpoint to get movies
     const url = new URL("http://localhost:4000/movies");
     const params = {
-        search: '',
+        search: router?.pathname || '',
         searchBy: 'title',
-        filter: '',
-        sortBy: 'vote_average',
+        filter: router?.query.filter?.toString() || '',
+        sortBy: router?.query.sortBy?.toString() || 'vote_average',
         sortOrder: 'desc',
         limit: '6',
     };
@@ -34,8 +34,6 @@ export async function getStaticProps() {
     const res = await fetch(url.toString())
     const {totalAmount: totalAmount, data: movies} = await res.json()
 
-    // By returning { props: { posts } }, the Blog component
-    // will receive `posts` as a prop at build time
     return {
         props: {
             totalAmount,
