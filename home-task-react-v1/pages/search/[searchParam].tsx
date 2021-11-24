@@ -33,6 +33,7 @@ export const getServerSideProps:GetServerSideProps<SearchProps, {searchParam: st
         limit: '6',
     };
     url.search = new URLSearchParams(requestParams).toString();
+
     const res = await fetch(url.toString())
     const {totalAmount: totalAmount, data: movies} = await res.json()
 

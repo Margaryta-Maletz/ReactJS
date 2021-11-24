@@ -16,7 +16,7 @@ export const CardPoster: React.FC<IMovie> = (props) => {
 
     return (
         <div className={styles.wrapper}>
-            <Link href={`/search/${props.id}`}>
+            <Link href={`/movies/${props.id}`}>
                 <img src={ props?.poster_path } alt={ props?.tagline}  width="322" height="455"/>
             </Link>
  {/*           <EditButton { ...props }/>*/}
