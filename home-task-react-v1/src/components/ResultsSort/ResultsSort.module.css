@@ -1,0 +1,34 @@
+.header {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: darkgrey;
+    mix-blend-mode: normal;
+}
+
+.list {
+    width: 150px;
+    margin-left: 31px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: white;
+    background: none;
+    border: none;
+    appearance: none;
+    background: url("../../../public/images/svg/arrow.svg") no-repeat right;
+
+}
+
+.item {
+    background: #424242;
+    border: none;
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-import './ResultCount.css';
+import styles from './ResultCount.module.css';
 
 type ResultCountProp = {
     count: string,
@@ -8,8 +8,8 @@ type ResultCountProp = {
 export const ResultCount: React.FC<ResultCountProp> = ({ count }) => {
     return (
         <>
-            <label className='results-count_label'>
-                <strong className='results-count_label_bold'>{ count }</strong> movies found
+            <label className={styles.label}>
+                <strong className={styles.labelBold}>{ count }</strong> movies found
             </label>
         </>
     )

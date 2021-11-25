@@ -1,0 +1,49 @@
+.wrapper {
+    margin: 0 auto;
+    height: 145px;
+}
+
+.header {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 40px;
+    line-height: 49px;
+    text-align: left;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: white;
+    margin: 0 0 38px;
+}
+
+.input {
+    width: 673px;
+    height: 57px;
+    mix-blend-mode: normal;
+    opacity: 70%;
+    background-color: rgba(50, 50, 50, 0.8);
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: left;
+    padding: 0 20px;
+    vertical-align: top;
+    color: white;
+    margin-right: 14px;
+    border: none;
+}
+
+.button {
+    width: 233px;
+    height: 57px;
+    background: #F65261;
+    border-radius: 4px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    text-transform: uppercase;
+    color: white;
+}
