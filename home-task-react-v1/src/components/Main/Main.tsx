@@ -42,7 +42,7 @@ export const Main:React.FC<MainProps> = ({totalAmount, movies}) => {
         <main className={`wrapper ${styles.main}`}>
             <div className={`wrapper ${styles.topBorder}`}/>
             <GenreToggle />
-            <ResultsSort sortItem={''}/>
+            <ResultsSort />
             <ResultCount count={ totalAmount.toString() } />
             <CardPosterList movies={movies}/>
         </main>

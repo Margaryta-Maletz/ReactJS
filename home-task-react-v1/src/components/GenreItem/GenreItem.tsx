@@ -26,7 +26,6 @@ export const GenreItem: React.FC<GenreItemProp> = ({ title, value}) => {
             param.length === 1
                 ? router.push(`/search/${searchParam}`)
                 : router.push(`/search/${searchParam}${param.replace('&', '')}`);
-            router.push(`/search/${searchParam}?filter=${genre}`);
         } else {
             param
                 ? param.includes('filter')
