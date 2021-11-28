@@ -131,7 +131,7 @@ export const AddMovie: React.FC<AddMovieProps> = (props) => {
                     }}
                 >
                     {({ errors, touched, isSubmitting }) => (
-                        <Form>
+                        <Form className={styles.form}>
                             <label htmlFor="title" className={styles.label}>
                                 title
                                 <Field name="title" className={styles.input} type="text" placeholder="Title movie" validate={validateTitle}/>
