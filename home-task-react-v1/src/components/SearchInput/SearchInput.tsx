@@ -1,16 +1,17 @@
 import React, {memo, useEffect, useState} from 'react';
 import styles from './SearchInput.module.css';
-import {useDispatch, useSelector} from "react-redux";
-import {IState} from "../../store/types";
-import {setSearchString, setEditMovieList} from '../../store/slice';
-import {useLocation} from "react-router";
 import {useRouter} from 'next/router'
+
+export const getSearchParam = (patch: string) => {
+    return patch?.match(/((?<=\/search\/).*(?=\?))|(?<=\/search\/).*/g)?.toString() ?? '';
+}
 
 export const SearchInput: React.FC = memo(() => {
     const [searchString, setSearchString] = useState('');
     const router = useRouter();
     const patch = router.asPath;
-    const searchParam = patch.match(/((?<=\/search\/).*(?=\?))|(?<=\/search\/).*/g)?.toString() || '';
+    const searchParam = getSearchParam(patch);
+
     const param = patch.match(/\?.*/i);
 
     const handleChangeSearchString = (e: React.ChangeEvent<HTMLInputElement>) => {

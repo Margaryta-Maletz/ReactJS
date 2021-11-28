@@ -1,34 +1,46 @@
 import React from "react";
 import styles from './GenreItem.module.css';
-/*import {useDispatch, useSelector} from "react-redux";
-import {IState} from "../../store/types";
-import {setActiveGenre} from "../../store/slice";*/
-import {Genre, genres} from "../../consts";
-// import {useHistory, useLocation} from "react-router-dom";
+import {useRouter} from 'next/router';
+import {getSearchParam} from '../SearchInput/SearchInput';
 
 interface GenreItemProp {
     title?: string;
-    value: string | null;
+    value: string;
 }
 
-export const GenreItem: React.FC<GenreItemProp> = ({ title, value }) => {
-/*    const dispatch = useDispatch();
-    const location = useLocation();
-    const history = useHistory();
-    const { activeGenre } = useSelector((state: IState) => state);*/
+const getActiveGenre = (patch: string) => {
+    return patch?.match(/(?<=filter=).*(?=&)|(?<=filter=).*/ig)?.toString() || '';
+}
 
-    const handleSelectGenre = () => {
-/*        dispatch(setActiveGenre(value));
-        const params = new URLSearchParams(location.search);
-        value ? params.set('genre', value) : params.delete('genre');
-        params && history.push(`?${params.toString()}`);*/
+export const GenreItem: React.FC<GenreItemProp> = ({ title, value}) => {
+    const router = useRouter();
+    const patch = router.asPath;
+    const searchParam = getSearchParam(patch);
+    let param = patch.match(/\?.*/i)?.toString() || '';
+    const activeGenre =getActiveGenre(patch);
+
+    const handleOnClick = (e: React.MouseEvent) => {
+        const genre = (e.target as HTMLElement).innerText.toLowerCase();
+        if (genre.toString() === 'all') {
+            param = param.replace(`filter=${activeGenre}`, '');
+            param.length === 1
+                ? router.push(`/search/${searchParam}`)
+                : router.push(`/search/${searchParam}${param.replace('&', '')}`);
+            router.push(`/search/${searchParam}?filter=${genre}`);
+        } else {
+            param
+                ? param.includes('filter')
+                    ? router.push(`/search/${searchParam}${param.replace(activeGenre, genre)}`)
+                    : router.push(`/search/${searchParam}${param}&filter=${genre}`)
+                : router.push(`/search/${searchParam}?filter=${genre}`);
+        }
     }
 
     return (
         <>
-            {value === null
+            {value === activeGenre
                 ? <li className={`${styles.item} ${styles.active}`}>{title || value}</li>
-                : <li className={styles.item} onClick={handleSelectGenre}>{title || value}</li>}
+                : <li className={styles.item} onClick={handleOnClick}>{title || value}</li>}
         </>
     )
 }
