@@ -1,11 +1,11 @@
-import './MessageForm.css';
+import styles from './MessageForm.module.css';
 import { LogoIcon } from '../LogoIcon';
 import { CloseButton } from '../CloseButton';
 import { Formik, Form } from 'formik';
 import axios from "axios";
-import {useDispatch} from "react-redux";
 import {setEditMovieList} from "../../store/slice";
 import React from "react";
+import Router from "next/router";
 
 type SetVisibleProps = {
     setVisible: (visible: boolean) => void,
@@ -18,9 +18,8 @@ export const MessageForm: React.FC<SetVisibleProps> = ({ setVisible, title,messa
     const handleChangeVisible = () => {
         setVisible(false);
     }
-    const dispatch = useDispatch();
     return (
-        <div className="wrapper wrapper-add_movie-background wrapper-background">
+        <div className={`wrapper ${styles.wrapperBackground}`}>
             <LogoIcon />
             <Formik
                 initialValues={{
@@ -31,23 +30,23 @@ export const MessageForm: React.FC<SetVisibleProps> = ({ setVisible, title,messa
                     handleChangeVisible();
                     await
                         axios.delete(`http://localhost:4000/movies/${deletedId}`)
-                            .then(() => {dispatch(setEditMovieList(true))})
+                            .then(Router.reload)
                             .catch((error) => alert(error));
                 }}
             >
                 {({ isSubmitting }) => (
                     <Form>
-                        <div className="wrapper wrapper-message">
-                            <div className="add_movie-close" onClick={handleChangeVisible}>
+                        <div className={`wrapper ${styles.wrapperMessage}`}>
+                            <div className={styles.close} onClick={handleChangeVisible}>
                                 <CloseButton />
                             </div>
-                            <h2 className="add_movie-title">
+                            <h2 className={styles.title}>
                                 {title ?? "form"}
                             </h2>
-                            <label className="message-label">
+                            <label className={styles.label}>
                                 {message ?? "Are you sure?"}
                             </label>
-                            <button className="add_movie-button add_movie-button-submit" type="submit" disabled={isSubmitting}>confirm</button>
+                            <button className={styles.submit} type="submit" disabled={isSubmitting}>confirm</button>
                         </div>
                     </Form>
                 )}

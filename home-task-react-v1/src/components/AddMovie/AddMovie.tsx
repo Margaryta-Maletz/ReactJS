@@ -1,14 +1,13 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import { Formik, Field, Form } from 'formik';
 import styles from './AddMovie.module.css';
 import { LogoIcon } from '../LogoIcon';
 import { CloseButton } from '../CloseButton';
 import {IMovie} from '../../store/types';
-import {Genre, genres, multiGenres} from "../../consts";
+import {multiGenres} from "../../consts";
 import axios from "axios";
-import {useDispatch} from "react-redux";
-import {setEditMovieList} from "../../store/slice";
 import {CustomMultiSelect} from "./CustomMultiSelect";
+import Router from "next/router";
 
 type AddMovieProps = {
     movie?: IMovie,
@@ -16,7 +15,6 @@ type AddMovieProps = {
 }
 export const AddMovie: React.FC<AddMovieProps> = (props) => {
     const isEditMovie = props.movie;
-/*    const dispatch = useDispatch();*/
     const formInitialValues = {
         title: props.movie?.title || "",
         tagline: props.movie?.tagline || "image",
@@ -109,7 +107,7 @@ export const AddMovie: React.FC<AddMovieProps> = (props) => {
                         isEditMovie
                             ? await
                             axios.put('http://localhost:4000/movies', values)
-                            .then(() => {/*dispatch(setEditMovieList(true));*/})
+                            .then(Router.reload)
                             .catch((error) => alert(error))
                             : await
                                 axios.post('http://localhost:4000/movies', {
@@ -125,7 +123,7 @@ export const AddMovie: React.FC<AddMovieProps> = (props) => {
                                     genres: values.genres,
                                     runtime: values.runtime,
                                 })
-                                    .then(() => {/*dispatch(setEditMovieList(true))*/})
+                                    .then(Router.reload)
                                     .catch((error) => alert(error));
                         props.setVisibleAddMovie();
                     }}
@@ -159,6 +157,7 @@ export const AddMovie: React.FC<AddMovieProps> = (props) => {
                                     options={multiGenres}
                                     component={CustomMultiSelect}
                                     placeholder="Select Genre"
+                                    validate={validateGenres}
                                     isMulti={true}
                                 />
                             </label>

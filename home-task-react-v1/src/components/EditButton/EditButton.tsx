@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import './EditButton.css';
+import styles from './EditButton.module.css';
 import { AddMovie } from '../AddMovie';
 import { MessageForm } from '../MessageForm';
 import { CloseButton } from '../CloseButton'
@@ -28,14 +28,14 @@ export const EditButton: React.FC<IMovie> = (props) => {
         <>
             {
                 isMenu
-                    ? <div className="edit-menu">
-                        <div className="edit-menu_close" onClick={handleCloseIsMenu}>
+                    ? <div className={styles.editMenu}>
+                        <div className={styles.editMenClose} onClick={handleCloseIsMenu}>
                             <CloseButton width={11} height={12}/>
                         </div>
-                        <label className="edit-menu_button" onClick={toggleVisible}>Edit</label>
-                        <label className="edit-menu_button" onClick={handleOpenFormDelete}>Delete</label>
+                        <label className={styles.editMenuButton} onClick={toggleVisible}>Edit</label>
+                        <label className={styles.editMenuButton} onClick={handleOpenFormDelete}>Delete</label>
                     </div>
-                    : <div className="edit-button" onClick={handleOpenIsMenu}>
+                    : <div className={styles.editButton} onClick={handleOpenIsMenu}>
                         <EditIcon />
                     </div>
             }
