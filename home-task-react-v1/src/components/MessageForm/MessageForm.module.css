@@ -1,0 +1,76 @@
+.wrapperBackground {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 100vw;
+    height: 100vh;
+    background: rgba(35, 35, 35, 0.918051);
+    mix-blend-mode: normal;
+    z-index: 5;
+    flex-direction: column;
+}
+
+.wrapperMessage {
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+    background-color: black;
+    width: 686px;
+    height: 352px;
+    align-items: center;
+    justify-content: center;
+    align-items: flex-start;
+    top: 200px;
+    margin: 0 auto;
+    padding: 60px;
+}
+
+.title {
+    width: 100%;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 40px;
+    line-height: 49px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    margin: 0 0 38px;
+}
+
+.label {
+    width: 100%;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    color: #FFFFFF;
+    margin-bottom: 50px;
+}
+
+.submit {
+    width: 180px;
+    height: 57px;
+    border-radius: 4px;
+    padding: 0;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    line-height: 54px;
+    align-self: flex-end;
+}
+
+.close {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+}

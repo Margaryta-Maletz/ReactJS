@@ -1,11 +1,4 @@
-form {
-    display: flex;
-    flex-wrap: wrap;
-    column-gap: 60px;
-    width: 100%;
-}
-
-.wrapper-add_movie-background {
+.wrapperBackground {
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
@@ -20,7 +13,7 @@ form {
     z-index: 5;
 }
 
-.wrapper.wrapper-add_movie {
+.wrapper {
     display: flex;
     position: relative;
     flex-wrap: wrap;
@@ -32,13 +25,13 @@ form {
     z-index: 10;
 }
 
-.add_movie-close {
+.close {
     position: absolute;
     top: 30px;
     right: 30px;
 }
 
-.add_movie-title {
+.title {
     width: 100%;
     font-family: Montserrat;
     font-style: normal;
@@ -51,7 +44,7 @@ form {
     margin: 0 0 38px;
 }
 
-.add_movie-label {
+.label {
     font-family: Montserrat;
     font-style: normal;
     font-weight: 600;
@@ -70,8 +63,7 @@ form {
     gap: 13px;
 }
 
-.add_movie-input,
-.add_movie-select > .react-select__control {
+.input {
     background: rgba(50, 50, 50, 0.948044);
     mix-blend-mode: normal;
     opacity: 0.8;
@@ -87,42 +79,23 @@ form {
     border: none;
 }
 
-.add_movie-select > .react-select__control {
-    padding: 8px ;
-    width: 520px;
-    box-shadow: none;
-}
-
-.add_movie-select > .react-select__control:hover{
-    border: 1px solid white;
-}
-
-.react-select__multi-value, .react-select__multi-value__label, .react-select__menu-list {
-    background: rgba(50, 50, 50, 0.948044) !important;
-    color: #FFFFFF !important;
-}
-
-.react-select__option:hover {
-    color: black !important;
-}
-
-.add_movie-second_column {
+.secondColumn {
     width: 270px;
 }
 
-.add_movie-textarea {
+.textarea {
     width: 827px;
     height: 147px;
     resize: none;
 }
 
-.add_movie-buttons_block {
+.buttonsBlock {
     width: 100%;
     display: flex;
     justify-content: flex-end;
 }
 
-.add_movie-button {
+.button {
     width: 180px;
     height: 57px;
     border-radius: 4px;
@@ -136,7 +109,7 @@ form {
     text-transform: uppercase;
 }
 
-.add_movie-button-reset {
+.buttonReset {
     margin-right: 13px;
     border: 1.5px solid #F65261;
     box-sizing: border-box;
@@ -144,17 +117,23 @@ form {
     background: none;
 }
 
-.add_movie-button-submit {
+.buttonSubmit {
     background: #F65261;
     border: none;
     color: #FFFFFF;
 }
 
-.add_movie-error {
+.error {
     color: white;
     padding: 0;
     font-style: normal;
     font-weight: 400;
     font-size: 8px;
     line-height: 10px;
+}
+
+.form {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 65px;
 }

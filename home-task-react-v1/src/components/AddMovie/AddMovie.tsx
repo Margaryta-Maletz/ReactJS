@@ -1,14 +1,13 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import { Formik, Field, Form } from 'formik';
-import './AddMovie.css';
+import styles from './AddMovie.module.css';
 import { LogoIcon } from '../LogoIcon';
 import { CloseButton } from '../CloseButton';
 import {IMovie} from '../../store/types';
-import {Genre, genres, multiGenres} from "../../consts";
+import {multiGenres} from "../../consts";
 import axios from "axios";
-import {useDispatch} from "react-redux";
-import {setEditMovieList} from "../../store/slice";
 import {CustomMultiSelect} from "./CustomMultiSelect";
+import Router from "next/router";
 
 type AddMovieProps = {
     movie?: IMovie,
@@ -16,7 +15,6 @@ type AddMovieProps = {
 }
 export const AddMovie: React.FC<AddMovieProps> = (props) => {
     const isEditMovie = props.movie;
-    const dispatch = useDispatch();
     const formInitialValues = {
         title: props.movie?.title || "",
         tagline: props.movie?.tagline || "image",
@@ -91,13 +89,13 @@ export const AddMovie: React.FC<AddMovieProps> = (props) => {
     }, []);
 
     return (
-        <div className="wrapper wrapper-add_movie-background">
+        <div className={`wrapper ${styles.wrapperBackground}`}>
             <LogoIcon />
-            <div className="wrapper wrapper-add_movie">
-                <div className="add_movie-close" onClick={props.setVisibleAddMovie}>
+            <div className={`wrapper ${styles.wrapper}`}>
+                <div className={styles.close} onClick={props.setVisibleAddMovie}>
                     <CloseButton/>
                 </div>
-                <h2 className="add_movie-title">
+                <h2 className={styles.title}>
                     {isEditMovie
                     ? 'edit movie'
                     : 'add movie'}
@@ -109,7 +107,7 @@ export const AddMovie: React.FC<AddMovieProps> = (props) => {
                         isEditMovie
                             ? await
                             axios.put('http://localhost:4000/movies', values)
-                            .then(() => {dispatch(setEditMovieList(true));})
+                            .then(Router.reload)
                             .catch((error) => alert(error))
                             : await
                                 axios.post('http://localhost:4000/movies', {
@@ -125,56 +123,57 @@ export const AddMovie: React.FC<AddMovieProps> = (props) => {
                                     genres: values.genres,
                                     runtime: values.runtime,
                                 })
-                                    .then(() => {dispatch(setEditMovieList(true))})
+                                    .then(Router.reload)
                                     .catch((error) => alert(error));
                         props.setVisibleAddMovie();
                     }}
                 >
                     {({ errors, touched, isSubmitting }) => (
-                        <Form>
-                            <label htmlFor="title" className="add_movie-label">
+                        <Form className={styles.form}>
+                            <label htmlFor="title" className={styles.label}>
                                 title
-                                <Field name="title" className="add_movie-input" type="text" placeholder="Title movie" validate={validateTitle}/>
-                                {errors.title && touched.title && <div className="add_movie-error">{errors.title}</div>}
+                                <Field name="title" className={styles.input} type="text" placeholder="Title movie" validate={validateTitle}/>
+                                {errors.title && touched.title && <div className={styles.error}>{errors.title}</div>}
                             </label>
-                            <label htmlFor="release_date" className="add_movie-label add_movie-second_column">
+                            <label htmlFor="release_date" className={`${styles.label} ${styles.secondColumn}`}>
                                 release date
-                                <Field name="release_date" className="add_movie-input add_movie-second_column" type="date" placeholder="Select Date" validate={validateReleaseDate}/>
-                                {errors.release_date && touched.release_date && <div className="add_movie-error">{errors.release_date}</div>}
+                                <Field name="release_date" className={`${styles.input} ${styles.secondColumn}`} type="date" placeholder="Select Date" validate={validateReleaseDate}/>
+                                {errors.release_date && touched.release_date && <div className={styles.error}>{errors.release_date}</div>}
                             </label>
-                            <label htmlFor="poster_path" className="add_movie-label">
+                            <label htmlFor="poster_path" className={styles.label}>
                                 movie URL
-                                <Field name="poster_path" className="add_movie-input" type="text" placeholder="https://" validate={validatePosterPath} autocomplete="off"/>
-                                {errors.poster_path && touched.poster_path && <div className="add_movie-error">{errors.poster_path}</div>}
+                                <Field name="poster_path" className={styles.input} type="text" placeholder="https://" validate={validatePosterPath} autocomplete="off"/>
+                                {errors.poster_path && touched.poster_path && <div className={styles.error}>{errors.poster_path}</div>}
                             </label>
-                            <label htmlFor="vote_average" className="add_movie-label add_movie-second_column">
+                            <label htmlFor="vote_average" className={`${styles.label} ${styles.secondColumn}`}>
                                 rating
-                                <Field name="vote_average" className="add_movie-input add_movie-second_column" type={"number"} step={0.1} placeholder="7.8" />
+                                <Field name="vote_average" className={`${styles.input} ${styles.secondColumn}`} type={"number"} step={0.1} placeholder="7.8" />
                             </label>
-                            <label htmlFor="genres" className="add_movie-label">
+                            <label htmlFor="genres" className={styles.label}>
                                 genre
                                 <Field
-                                    className="add_movie-select"
+                                    className={styles.select}
                                     name="genres"
                                     options={multiGenres}
                                     component={CustomMultiSelect}
                                     placeholder="Select Genre"
+                                    validate={validateGenres}
                                     isMulti={true}
                                 />
                             </label>
-                            <label htmlFor="runtime" className="add_movie-label add_movie-second_column">
+                            <label htmlFor="runtime" className={`${styles.label} ${styles.secondColumn}`}>
                                 runtime
-                                <Field name="runtime" className="add_movie-input add_movie-second_column" type={"number"} step={5.0} placeholder="minutes" validate={validateRuntime} autocomplete="off"/>
-                                {errors.runtime && touched.runtime && <div className="add_movie-error">{errors.runtime}</div>}
+                                <Field name="runtime" className={`${styles.input} ${styles.secondColumn}`} type={"number"} step={5.0} placeholder="minutes" validate={validateRuntime} autocomplete="off"/>
+                                {errors.runtime && touched.runtime && <div className={styles.error}>{errors.runtime}</div>}
                             </label>
-                            <label htmlFor="overview" className="add_movie-label">
+                            <label htmlFor="overview" className={styles.label}>
                                 overview
-                                <Field name="overview" className="add_movie-input add_movie-textarea" as="textarea" placeholder="Movie description" validate={validateOverview} autocomplete="off"/>
-                                {errors.overview && touched.overview && <div className="add_movie-error">{errors.overview}</div>}
+                                <Field name="overview" className={`${styles.input} ${styles.textarea}`} as="textarea" placeholder="Movie description" validate={validateOverview} autocomplete="off"/>
+                                {errors.overview && touched.overview && <div className={styles.error}>{errors.overview}</div>}
                             </label>
-                            <div className='add_movie-buttons_block'>
-                                <input className="add_movie-button add_movie-button-reset" type='reset'/>
-                                <input className="add_movie-button add_movie-button-submit" type="submit" disabled={isSubmitting}/>
+                            <div className={styles.buttonsBlock}>
+                                <input className={`${styles.button} ${styles.buttonReset}`}  type='reset'/>
+                                <input className={`${styles.button} ${styles.buttonSubmit}`} type="submit" disabled={isSubmitting}/>
                             </div>
                         </Form>
                     )}
